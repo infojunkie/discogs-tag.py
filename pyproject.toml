@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "discogs-tag"
+version = "0.1.0"
+description = ""
+authors = ["infojunkie <karim.ratib@gmail.com>"]
+readme = "README.md"
+packages = [{include = "discogs_tag", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fire = "^0.5.0"
+mutagen = "^1.46.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+discogs-tag = "discogs_tag.cli:cli"
