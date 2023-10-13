@@ -15,9 +15,10 @@ def tag(release, dir = './', dry = False):
   with urllib.request.urlopen(request) as response:
     data = json.load(response)
     files = sorted(glob(os.path.join(dir, '*.flac')) + glob(os.path.join(dir, '*.mp3')))
-    if (len(files) != len(data['tracklist'])):
-      raise Exception(f'Expecting {len(data["tracklist"])} files but found {len(files)}. Aborting.')
-    for n, track in enumerate(data['tracklist']):
+    tracks = list(filter(lambda t: t['type_'] == 'track', data['tracklist']))
+    if (len(files) != len(tracks)):
+      raise Exception(f'Expecting {len(tracks)} files but found {len(files)}. Aborting.')
+    for n, track in enumerate(tracks):
       audio = mutagen.File(files[n], easy=True)
       audio['title'] = track['title']
       audio['artist'] = ', '.join([artist_name(artist) for artist in track['artists']]) if 'artists' in track else ''
