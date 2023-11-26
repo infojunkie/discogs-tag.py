@@ -45,9 +45,9 @@ def apply_metadata(track, audio):
     audio['composer'] = composers
 
 def artist_name(artist):
-  if 'anv' in artist:
+  if 'anv' in artist and artist['anv']:
     return artist['anv']
-  elif 'name' in artist:
+  elif 'name' in artist and artist['name']:
     return artist['name']
   else:
     return None
