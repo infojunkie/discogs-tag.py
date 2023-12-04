@@ -8,6 +8,9 @@ def test_apply_metadata():
       'anv': 'Artist 1'
     }, {
       'name': 'Artist 2'
+    }, {
+      'anv': '',
+      'name': 'Artist 3'
     }],
     'position': '1-02',
     'extraartists': [{
@@ -19,7 +22,7 @@ def test_apply_metadata():
     }]
   }, audio)
   assert audio['title'] == 'Title'
-  assert audio['artist'] == 'Artist 1, Artist 2'
+  assert audio['artist'] == 'Artist 1, Artist 2, Artist 3'
   assert audio['discnumber'] == '1'
   assert audio['tracknumber'] == '02'
   assert audio['composer'] == 'Composer'
