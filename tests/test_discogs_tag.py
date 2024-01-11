@@ -1,8 +1,10 @@
-from discogs_tag.cli import apply_metadata
+from discogs_tag.cli import merge_metadata, apply_metadata
+import pytest
+import json
 
-def test_apply_metadata():
+def test_merge_metadata():
   audio = {}
-  apply_metadata({
+  merge_metadata({
     'title': 'Title',
     'artists': [{
       'anv': 'Artist 1'
@@ -10,7 +12,7 @@ def test_apply_metadata():
       'name': 'Artist 2'
     }, {
       'anv': '',
-      'name': 'Artist 3'
+      'name': 'Artist 3 (56)'
     }],
     'position': '1-02',
     'extraartists': [{
@@ -22,7 +24,16 @@ def test_apply_metadata():
     }]
   }, audio)
   assert audio['title'] == 'Title'
-  assert audio['artist'] == 'Artist 1, Artist 2, Artist 3'
+  assert audio['artist'] == 'Artist 1, Artist 2, Artist 3, Guitarist'
   assert audio['discnumber'] == '1'
   assert audio['tracknumber'] == '02'
   assert audio['composer'] == 'Composer'
+
+def test_apply_metadata():
+  with open('tests/release.json') as release:
+    data = json.load(release)
+
+    # Test that files must match API results.
+    with pytest.raises(Exception) as e1:
+      apply_metadata(data, [], False, False)
+    assert "Expecting 28 files" in str(e1.value)

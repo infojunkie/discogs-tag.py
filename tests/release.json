@@ -1,0 +1,789 @@
+{
+  "id": 18051880,
+  "status": "Accepted",
+  "year": 2002,
+  "resource_url": "https://api.discogs.com/releases/18051880",
+  "uri": "https://www.discogs.com/release/18051880-%C3%89venk-Chants-Rituels-Des-Nomades-De-La-Ta%C3%AFga-Ritual-Songs-Of-The-Nomadic-Taiga-People",
+  "artists": [
+    {
+      "name": "Evenks",
+      "anv": "Évenk",
+      "join": "",
+      "role": "",
+      "tracks": "",
+      "id": 9046156,
+      "resource_url": "https://api.discogs.com/artists/9046156"
+    }
+  ],
+  "artists_sort": "Evenks",
+  "labels": [
+    {
+      "name": "Buda Records",
+      "catno": "3015792",
+      "entity_type": "1",
+      "entity_type_name": "Label",
+      "id": 103197,
+      "resource_url": "https://api.discogs.com/labels/103197"
+    }
+  ],
+  "series": [
+    {
+      "name": "Musique Du Monde",
+      "catno": "",
+      "entity_type": "2",
+      "entity_type_name": "Series",
+      "id": 231838,
+      "resource_url": "https://api.discogs.com/labels/231838"
+    },
+    {
+      "name": "Collection Dominique Buscail",
+      "catno": "",
+      "entity_type": "2",
+      "entity_type_name": "Series",
+      "id": 235937,
+      "resource_url": "https://api.discogs.com/labels/235937"
+    },
+    {
+      "name": "Sibérie",
+      "catno": "8",
+      "entity_type": "2",
+      "entity_type_name": "Series",
+      "id": 1075549,
+      "resource_url": "https://api.discogs.com/labels/1075549"
+    }
+  ],
+  "companies": [
+    {
+      "name": "Buda Musique",
+      "catno": "",
+      "entity_type": "4",
+      "entity_type_name": "Record Company",
+      "id": 60725,
+      "resource_url": "https://api.discogs.com/labels/60725"
+    },
+    {
+      "name": "Universal France",
+      "catno": "",
+      "entity_type": "9",
+      "entity_type_name": "Distributed By",
+      "id": 49807,
+      "resource_url": "https://api.discogs.com/labels/49807"
+    },
+    {
+      "name": "MPO",
+      "catno": "",
+      "entity_type": "17",
+      "entity_type_name": "Pressed By",
+      "id": 56025,
+      "resource_url": "https://api.discogs.com/labels/56025"
+    }
+  ],
+  "formats": [
+    {
+      "name": "CD",
+      "qty": "1"
+    }
+  ],
+  "data_quality": "Needs Vote",
+  "community": {
+    "have": 10,
+    "want": 4,
+    "rating": {
+      "count": 1,
+      "average": 5
+    },
+    "submitter": {
+      "username": "GrahamStewart",
+      "resource_url": "https://api.discogs.com/users/GrahamStewart"
+    },
+    "contributors": [
+      {
+        "username": "GrahamStewart",
+        "resource_url": "https://api.discogs.com/users/GrahamStewart"
+      }
+    ],
+    "data_quality": "Needs Vote",
+    "status": "Accepted"
+  },
+  "format_quantity": 1,
+  "date_added": "2021-03-28T10:08:00-07:00",
+  "date_changed": "2021-03-28T12:49:34-07:00",
+  "num_for_sale": 0,
+  "lowest_price": null,
+  "title": "Chants Rituels Des Nomades De La Taïga = Ritual Songs Of The Nomadic Taiga People",
+  "country": "France",
+  "released": "2002",
+  "notes": "Durée totale: 71:59.\nRecorded between 1997 and 2000 in Iengra, Ust'-Njukža, Čita, Tjanja, Tura, Bajkit,and  Džilinda, Russia.\nMade in France.\nComes with a 36 page booklet with liner notes in French and English.\nRelease date taken from data in CD matrix.\n",
+  "released_formatted": "2002",
+  "identifiers": [
+    {
+      "type": "Barcode",
+      "value": "3 259130 157925"
+    },
+    {
+      "type": "Matrix / Runout",
+      "value": "[MPO logo] 3015792 @ 01 IFPI L039 12/09/02 12:21:58"
+    },
+    {
+      "type": "Mastering SID Code",
+      "value": "IFPI L039"
+    },
+    {
+      "type": "Mould SID Code",
+      "value": "IFPI 121D"
+    },
+    {
+      "type": "Rights Society",
+      "value": "SACEM SACD SDRM SGDL"
+    }
+  ],
+  "genres": [
+    "Folk, World, & Country"
+  ],
+  "tracklist": [
+    {
+      "position": "",
+      "type_": "heading",
+      "title": "Chants De Vœux = Wishing Songs",
+      "duration": ""
+    },
+    {
+      "position": "1",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Galina Andreevna Lekhanova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046159,
+          "resource_url": "https://api.discogs.com/artists/9046159"
+        }
+      ],
+      "title": "Ogol",
+      "duration": "3:26"
+    },
+    {
+      "position": "2",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Nina Prokop'evna Pudova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046162,
+          "resource_url": "https://api.discogs.com/artists/9046162"
+        }
+      ],
+      "title": "Kumalakan",
+      "duration": "1:20"
+    },
+    {
+      "position": "3",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Elizaveta Petrovna Kirilova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046165,
+          "resource_url": "https://api.discogs.com/artists/9046165"
+        }
+      ],
+      "title": "Ogol",
+      "duration": "2:50"
+    },
+    {
+      "position": "4",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Vladimir Andreev (3)",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046168,
+          "resource_url": "https://api.discogs.com/artists/9046168"
+        }
+      ],
+      "title": "Untitled",
+      "duration": "4:45"
+    },
+    {
+      "position": "5",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Anfissa Pavlovna Avelova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046171,
+          "resource_url": "https://api.discogs.com/artists/9046171"
+        }
+      ],
+      "title": "Ogol",
+      "duration": "2:13"
+    },
+    {
+      "position": "6",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Galina Andreevna Abramova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046174,
+          "resource_url": "https://api.discogs.com/artists/9046174"
+        }
+      ],
+      "title": "Ègèj",
+      "duration": "1:50"
+    },
+    {
+      "position": "7",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Prokopij Egorovič Nikolaev",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046177,
+          "resource_url": "https://api.discogs.com/artists/9046177"
+        }
+      ],
+      "title": "Untitled",
+      "duration": "1:06"
+    },
+    {
+      "position": "",
+      "type_": "heading",
+      "title": "Rondes = The Round Dances",
+      "duration": ""
+    },
+    {
+      "position": "8",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Prokopij Egorovič Nikolaev",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046177,
+          "resource_url": "https://api.discogs.com/artists/9046177"
+        }
+      ],
+      "title": "Dèlèhinčo",
+      "duration": "1:24"
+    },
+    {
+      "position": "9",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Valentina Stepanovna Enokhova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046180,
+          "resource_url": "https://api.discogs.com/artists/9046180"
+        }
+      ],
+      "title": "Mončoraj",
+      "duration": "1:04"
+    },
+    {
+      "position": "10",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Evgenja Alekseevna Kurejskaja",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046183,
+          "resource_url": "https://api.discogs.com/artists/9046183"
+        }
+      ],
+      "title": "Hèno",
+      "duration": "0:59"
+    },
+    {
+      "position": "11",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Maria Enokhova",
+          "anv": "",
+          "join": "Et",
+          "role": "",
+          "tracks": "",
+          "id": 9046186,
+          "resource_url": "https://api.discogs.com/artists/9046186"
+        },
+        {
+          "name": "Oktjabrina Vladimirovna Naumova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046189,
+          "resource_url": "https://api.discogs.com/artists/9046189"
+        }
+      ],
+      "title": "Dèvèjdè",
+      "duration": "2:58"
+    },
+    {
+      "position": "",
+      "type_": "heading",
+      "title": "Chants Narratifs = Narrative Songs",
+      "duration": ""
+    },
+    {
+      "position": "12",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Ivan Egorovič Galjujskij",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046192,
+          "resource_url": "https://api.discogs.com/artists/9046192"
+        }
+      ],
+      "title": "Comptine En Forme De Dialogue = Nursery Rhyme In The Form Of A Dialogue",
+      "duration": "0:45"
+    },
+    {
+      "position": "13",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Uljana Kikolaevna Vasileava",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046195,
+          "resource_url": "https://api.discogs.com/artists/9046195"
+        }
+      ],
+      "title": "U-juju",
+      "duration": "0:54"
+    },
+    {
+      "position": "14",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Oktjabrina Vladimirovna Naumova",
+          "anv": "Oktjabrina Vladimirovna",
+          "join": "Et",
+          "role": "",
+          "tracks": "",
+          "id": 9046189,
+          "resource_url": "https://api.discogs.com/artists/9046189"
+        },
+        {
+          "name": "Svetlana Naumova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046198,
+          "resource_url": "https://api.discogs.com/artists/9046198"
+        }
+      ],
+      "title": "Jangduli",
+      "duration": "2:05"
+    },
+    {
+      "position": "15",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Galina Andreevna Lekhanova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046159,
+          "resource_url": "https://api.discogs.com/artists/9046159"
+        }
+      ],
+      "title": "Gudjajè",
+      "duration": "1:54"
+    },
+    {
+      "position": "16",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Elena Dmitrieva Tikhonova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046201,
+          "resource_url": "https://api.discogs.com/artists/9046201"
+        }
+      ],
+      "title": "Untitled",
+      "duration": "1:04"
+    },
+    {
+      "position": "17",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Galina Andreevna Abramova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046174,
+          "resource_url": "https://api.discogs.com/artists/9046174"
+        }
+      ],
+      "title": "Adyn Gačin",
+      "duration": "2:37"
+    },
+    {
+      "position": "",
+      "type_": "heading",
+      "title": "Chants Chamaniques = Shamanic Songs",
+      "duration": ""
+    },
+    {
+      "position": "18",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Evdokja Egorovna Lekhanova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046204,
+          "resource_url": "https://api.discogs.com/artists/9046204"
+        }
+      ],
+      "title": "Untitled",
+      "duration": "4:41"
+    },
+    {
+      "position": "19",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Oktjabrina Vladimirovna Naumova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046189,
+          "resource_url": "https://api.discogs.com/artists/9046189"
+        }
+      ],
+      "title": "Buga",
+      "duration": "1:27"
+    },
+    {
+      "position": "20",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Savelij Vasilev",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046207,
+          "resource_url": "https://api.discogs.com/artists/9046207"
+        }
+      ],
+      "title": "Extrait D'un Rituel Chamanique = An Excerpt From A Shamanic Ritual",
+      "duration": "2:04"
+    },
+    {
+      "position": "21",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Savelij Vasilev",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046207,
+          "resource_url": "https://api.discogs.com/artists/9046207"
+        }
+      ],
+      "title": "Suide De Rituel = Continuation Of The Ritual",
+      "duration": "3:52"
+    },
+    {
+      "position": "22",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Savelij Vasilev",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046207,
+          "resource_url": "https://api.discogs.com/artists/9046207"
+        }
+      ],
+      "title": "Suide De Rituel = Continuation Of The Ritual",
+      "duration": "1:37"
+    },
+    {
+      "position": "23",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Savelij Vasilev",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046207,
+          "resource_url": "https://api.discogs.com/artists/9046207"
+        }
+      ],
+      "title": "Suide De Rituel = Continuation Of The Ritual",
+      "duration": "5:07"
+    },
+    {
+      "position": "24",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Prokopij Egorovič Nikolaev",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046177,
+          "resource_url": "https://api.discogs.com/artists/9046177"
+        }
+      ],
+      "title": "Gokaj",
+      "duration": "3:35"
+    },
+    {
+      "position": "",
+      "type_": "heading",
+      "title": "Berceuses = Lullabies",
+      "duration": ""
+    },
+    {
+      "position": "25",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Galina Andreevna Abramova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046174,
+          "resource_url": "https://api.discogs.com/artists/9046174"
+        }
+      ],
+      "title": "Ogol",
+      "duration": "4:26"
+    },
+    {
+      "position": "26",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Elena Dmitrieva Tikhonova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046201,
+          "resource_url": "https://api.discogs.com/artists/9046201"
+        }
+      ],
+      "title": "Untitled",
+      "duration": "1:15"
+    },
+    {
+      "position": "27",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Oktjabrina Vladimirovna Naumova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046189,
+          "resource_url": "https://api.discogs.com/artists/9046189"
+        }
+      ],
+      "title": "Sagadjam",
+      "duration": "5:47"
+    },
+    {
+      "position": "28",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Margarita Kolesova",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 9046210,
+          "resource_url": "https://api.discogs.com/artists/9046210"
+        }
+      ],
+      "title": "Ba-lju-lju",
+      "duration": "3:55"
+    }
+  ],
+  "extraartists": [
+    {
+      "name": "Claudine Combalier",
+      "anv": "",
+      "join": "",
+      "role": "Design Concept [Conception Graphique]",
+      "tracks": "",
+      "id": 2161557,
+      "resource_url": "https://api.discogs.com/artists/2161557"
+    },
+    {
+      "name": "Gilles Fruchaux",
+      "anv": "",
+      "join": "",
+      "role": "Editor [Collection Dominique Buscail Dirigée Par]",
+      "tracks": "",
+      "id": 1284842,
+      "resource_url": "https://api.discogs.com/artists/1284842"
+    },
+    {
+      "name": "Henri Lecomte",
+      "anv": "",
+      "join": "",
+      "role": "Editor [Série Dirigée Par]",
+      "tracks": "",
+      "id": 1293259,
+      "resource_url": "https://api.discogs.com/artists/1293259"
+    },
+    {
+      "name": "Dominique Bach",
+      "anv": "",
+      "join": "",
+      "role": "Liner Notes [English Translation]",
+      "tracks": "",
+      "id": 1987331,
+      "resource_url": "https://api.discogs.com/artists/1987331"
+    },
+    {
+      "name": "Alexandra Lavrillier",
+      "anv": "",
+      "join": "",
+      "role": "Liner Notes [Texte De Présentation], Liner Notes [Traductions À Partir De L'évenk]",
+      "tracks": "",
+      "id": 4233210,
+      "resource_url": "https://api.discogs.com/artists/4233210"
+    },
+    {
+      "name": "Henri Lecomte",
+      "anv": "",
+      "join": "",
+      "role": "Photography By [Pages 1, 19]",
+      "tracks": "",
+      "id": 1293259,
+      "resource_url": "https://api.discogs.com/artists/1293259"
+    },
+    {
+      "name": "Alexandra Lavrillier",
+      "anv": "",
+      "join": "",
+      "role": "Photography By [Pages 17, 18, 20, 36]",
+      "tracks": "",
+      "id": 4233210,
+      "resource_url": "https://api.discogs.com/artists/4233210"
+    },
+    {
+      "name": "Alexandra Lavrillier",
+      "anv": "",
+      "join": "",
+      "role": "Recorded By",
+      "tracks": "4, 5, 7 to 11, 13, 19 to 24",
+      "id": 4233210,
+      "resource_url": "https://api.discogs.com/artists/4233210"
+    },
+    {
+      "name": "Henri Lecomte",
+      "anv": "",
+      "join": "",
+      "role": "Recorded By",
+      "tracks": "1 to 3, 6, 12, 14 to 18, 25 to 28",
+      "id": 1293259,
+      "resource_url": "https://api.discogs.com/artists/1293259"
+    }
+  ],
+  "images": [
+    {
+      "type": "primary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 588
+    },
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 583
+    },
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 524
+    },
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 554
+    }
+  ],
+  "thumb": "",
+  "estimated_weight": 85,
+  "blocked_from_sale": false
+}
