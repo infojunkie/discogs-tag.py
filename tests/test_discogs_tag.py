@@ -22,7 +22,12 @@ def test_merge_metadata():
       'role': 'Written-By',
       'name': 'Composer'
     }]
-  }, audio)
+  }, audio, {
+    'skip_artist': False,
+    'skip_composer': False,
+    'skip_title': False,
+    'skip_position': False,
+  })
   assert audio['title'] == 'Title'
   assert audio['artist'] == 'Artist 1, Artist 2, Artist 3, Guitarist'
   assert audio['discnumber'] == '1'
@@ -34,6 +39,6 @@ def test_apply_metadata():
     data = json.load(release)
 
     # Test that files must match API results.
-    with pytest.raises(Exception) as e1:
-      apply_metadata(data, [], False, False)
-    assert "Expecting 28 files" in str(e1.value)
+    with pytest.raises(Exception) as error:
+      apply_metadata(data, [], { 'dry': False, 'ignore': False })
+    assert "Expecting 28 files" in str(error.value)
