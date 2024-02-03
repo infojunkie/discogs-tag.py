@@ -5,6 +5,8 @@ import json
 def test_merge_metadata():
   audio = {}
   merge_metadata({
+    'year': 2002,
+  }, {
     'title': 'Title',
     'artists': [{
       'anv': 'Artist 1'
@@ -27,12 +29,14 @@ def test_merge_metadata():
     'skip_composer': False,
     'skip_title': False,
     'skip_position': False,
+    'skip_year': False
   })
   assert audio['title'] == 'Title'
   assert audio['artist'] == 'Artist 1, Artist 2, Artist 3, Guitarist'
   assert audio['discnumber'] == '1'
   assert audio['tracknumber'] == '02'
   assert audio['composer'] == 'Composer'
+  assert audio['date'] == '2002'
 
 def test_apply_metadata():
   with open('tests/release.json') as release:

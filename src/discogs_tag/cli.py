@@ -17,7 +17,8 @@ def tag(
   skip_artist=False,
   skip_title=False,
   skip_composer=False,
-  skip_position=False
+  skip_position=False,
+  skip_year=False
 ):
   """Tag the audio files with the given Discogs release."""
   options = locals()
@@ -32,8 +33,8 @@ def tag(
     )
     apply_metadata(data, files, options)
 
-def apply_metadata(data, files, options):
-  tracks = list(filter(lambda t: t['type_'] == 'track', data['tracklist']))
+def apply_metadata(release, files, options):
+  tracks = list(filter(lambda t: t['type_'] == 'track', release['tracklist']))
   if len(files) != len(tracks):
     if options['ignore']:
       print(f'Expecting {len(tracks)} files but found {len(files)}. Ignoring.', file=sys.stderr)
@@ -43,7 +44,7 @@ def apply_metadata(data, files, options):
   for n, track in enumerate(tracks):
     try:
       audio = mutagen.File(files[n], easy=True)
-      merge_metadata(track, audio, options)
+      merge_metadata(release, track, audio, options)
       if options['dry']:
         pprint(audio)
       else:
@@ -57,7 +58,7 @@ def apply_metadata(data, files, options):
   if not options['dry']:
     print(f'Processed {len(files)} audio files.')
 
-def merge_metadata(track, audio, options):
+def merge_metadata(release, track, audio, options):
   if not options['skip_title']:
     audio['title'] = track['title']
 
@@ -80,6 +81,10 @@ def merge_metadata(track, audio, options):
     audio['tracknumber'] = positions[-1]
     if len(positions) > 1:
       audio['discnumber'] = positions[0]
+
+  if not options['skip_year']:
+    if 'year' in release and release['year']:
+      audio['date'] = str(release['year'])
 
 def artist_name(artist):
   name = None
