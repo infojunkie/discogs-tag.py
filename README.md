@@ -10,10 +10,10 @@ A rudimentary audio tagger based on Discogs metadata.
 # Usage
 ```shell
 NAME
-    discogs-tag - Tag the audio files with the given Discogs release.
+    discogs-tag tag - Tag the audio files with the given Discogs release.
 
 SYNOPSIS
-    discogs-tag RELEASE <flags>
+    discogs-tag tag RELEASE <flags>
 
 DESCRIPTION
     Tag the audio files with the given Discogs release.
@@ -35,6 +35,46 @@ FLAGS
     --skip_composer=SKIP_COMPOSER
         Default: False
     --skip_position=SKIP_POSITION
+        Default: False
+    --skip_year=SKIP_YEAR
+        Default: False
+    --skip_subtrack=SKIP_SUBTRACK
+        Default: False
+
+NOTES
+    You can also use flags syntax for POSITIONAL ARGUMENTS
+```
+```shell
+NAME
+    discogs-tag copy - Copy the audio tags from source to destination folders.
+
+SYNOPSIS
+    discogs-tag copy SRC <flags>
+
+DESCRIPTION
+    Copy the audio tags from source to destination folders.
+
+POSITIONAL ARGUMENTS
+    SRC
+
+FLAGS
+    --dir=DIR
+        Default: './'
+    --dry=DRY
+        Default: False
+    -i, --ignore=IGNORE
+        Default: False
+    --skip_artist=SKIP_ARTIST
+        Default: False
+    --skip_title=SKIP_TITLE
+        Default: False
+    --skip_composer=SKIP_COMPOSER
+        Default: False
+    --skip_position=SKIP_POSITION
+        Default: False
+    --skip_year=SKIP_YEAR
+        Default: False
+    --skip_subtrack=SKIP_SUBTRACK
         Default: False
 
 NOTES

@@ -39,10 +39,19 @@ def test_merge_metadata():
   assert audio['date'] == '2002'
 
 def test_apply_metadata():
-  with open('tests/release.json') as release:
+  with open('tests/18051880.json') as release:
     data = json.load(release)
 
     # Test that files must match API results.
     with pytest.raises(Exception) as error:
-      apply_metadata(data, [], { 'dry': False, 'ignore': False })
+      apply_metadata(data, [], { 'dry': False, 'ignore': False, 'skip_subtrack': False })
     assert "Expecting 28 files" in str(error.value)
+
+def test_count_subtracks():
+  with open('tests/21343819.json') as release:
+    data = json.load(release)
+
+    # Test that files must match API results.
+    with pytest.raises(Exception) as error:
+      apply_metadata(data, [], { 'dry': False, 'ignore': False, 'skip_subtrack': False })
+    assert "Expecting 18 files" in str(error.value)

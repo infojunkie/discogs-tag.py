@@ -1,0 +1,382 @@
+{
+  "id": 16215626,
+  "status": "Accepted",
+  "year": 1983,
+  "resource_url": "https://api.discogs.com/releases/16215626",
+  "uri": "https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here",
+  "artists": [
+    {
+      "name": "Pink Floyd",
+      "anv": "",
+      "join": "",
+      "role": "",
+      "tracks": "",
+      "id": 45467,
+      "resource_url": "https://api.discogs.com/artists/45467"
+    }
+  ],
+  "artists_sort": "Pink Floyd",
+  "labels": [
+    {
+      "name": "CBS",
+      "catno": "CK 33453",
+      "entity_type": "1",
+      "entity_type_name": "Label",
+      "id": 3072,
+      "resource_url": "https://api.discogs.com/labels/3072"
+    }
+  ],
+  "series": [],
+  "companies": [
+    {
+      "name": "Pink Floyd Music Ltd.",
+      "catno": "",
+      "entity_type": "14",
+      "entity_type_name": "Copyright (c)",
+      "id": 272650,
+      "resource_url": "https://api.discogs.com/labels/272650"
+    },
+    {
+      "name": "Pink Floyd Music Ltd.",
+      "catno": "",
+      "entity_type": "13",
+      "entity_type_name": "Phonographic Copyright (p)",
+      "id": 272650,
+      "resource_url": "https://api.discogs.com/labels/272650"
+    }
+  ],
+  "formats": [
+    {
+      "name": "CD",
+      "qty": "1",
+      "descriptions": [
+        "Album",
+        "Reissue"
+      ]
+    }
+  ],
+  "data_quality": "Needs Vote",
+  "community": {
+    "have": 155,
+    "want": 395,
+    "rating": {
+      "count": 8,
+      "average": 5
+    },
+    "submitter": {
+      "username": "jeff_spicoli",
+      "resource_url": "https://api.discogs.com/users/jeff_spicoli"
+    },
+    "contributors": [
+      {
+        "username": "jeff_spicoli",
+        "resource_url": "https://api.discogs.com/users/jeff_spicoli"
+      },
+      {
+        "username": "appazappa",
+        "resource_url": "https://api.discogs.com/users/appazappa"
+      },
+      {
+        "username": "XatMB",
+        "resource_url": "https://api.discogs.com/users/XatMB"
+      }
+    ],
+    "data_quality": "Needs Vote",
+    "status": "Accepted"
+  },
+  "format_quantity": 1,
+  "date_added": "2020-11-14T18:34:46-08:00",
+  "date_changed": "2021-03-31T06:41:11-07:00",
+  "num_for_sale": 0,
+  "lowest_price": null,
+  "master_id": 11703,
+  "master_url": "https://api.discogs.com/masters/11703",
+  "title": "Wish You Were Here",
+  "country": "US",
+  "released": "1983",
+  "notes": "Release Information: First U.S. release with plain (sometimes referred to as \"crude\") matrix fonts. At the bottom of the label, it says: \"\"CBS\" [logo] are trademarks of CBS Inc.\" (this first issue does not say \"Made in Japan\" at the bottom of the label). On the back of the CD cover is a vertical white strip down the left side that has the \"Compact Disc Digital Audio\" logo at the top, nothing in the middle, and the bar code at the bottom. When inserted into a CD player, the player will read the number of tracks (or songs) as 2.\n\n\nFront cover:\n\"Record manufactured in Japan by CBS/Sony,Tokyo,Japan. © 1975 Pink Floyd Music Limited //℗ 1975 Pink Floyd Music Limited./Manufactured by CBS Records/CBS Inc./51 W.52 street, New York, N.Y./\"CBS,\" [trademark] are trademarks of CBS Inc./WARNING: All Rights Reserved. Unauthorized duplication is a violation of applicable laws.\"\n\nThe front cover is 1/4 of a two-times-folded leaf, which has the lyrics written on its unfolded back.\nThe inner front cover is the 2nd from 4 parts of that folding.\n\nAs found on the lyrics side of the two times folded cover leaf:\n\"Dick Parry saxophone on Shine On You Crazy Diamond\nRoy Harper vocal on Have a Cigar\nRecorded at Abbey Road Studios January to July 1975\nEngineered by Brian Humphries\nassisted by Peter James\nThanks to Bernie Caulder\nand Phil Taylor\nAll lyrics by Roger Waters\nProduced by Pink Floyd\n\nSleeve design and Photography\nby Hipgnosis assisted by Peter Christopherson\nJeffSmith Howard Bartrop\nand Richard Manning\nDye transfers by\nCombined Graphics and Simon Bell\nGraphics by George Hardie NTA\nAll selections © 1975 Pink Floyd Music\nPublishers Inc. (BMI). Used by permission.\nAll Rights Reserved.\n© 1975 Pink Floyd Limited\n33453\" \n",
+  "released_formatted": "1983",
+  "identifiers": [
+    {
+      "type": "Barcode",
+      "value": "0 7464-33453-2",
+      "description": "Text"
+    },
+    {
+      "type": "Barcode",
+      "value": "074643345323",
+      "description": "Scanned"
+    },
+    {
+      "type": "Other",
+      "value": "MANUFACTURED BY CBS / SONY RECORDS INC.",
+      "description": "Engraved around center hole"
+    },
+    {
+      "type": "Other",
+      "value": "DIDP 50004",
+      "description": "DADC - disc face"
+    },
+    {
+      "type": "Matrix / Runout",
+      "value": "35DP-4-7 1A1 "
+    }
+  ],
+  "videos": [
+    {
+      "uri": "https://www.youtube.com/watch?v=fn1R-5p_j5c",
+      "title": "Pink Floyd - Welcome to the Machine (Official Music Video)",
+      "description": "Welcome to the Machine is the second song on Pink Floyd's 1975 album Wish You Were Here. The song is said to be inspired by George Orwell's book 1984, in which a man is trying to escape the government which is brainwashing its citizens with TV shows and",
+      "duration": 464,
+      "embed": true
+    }
+  ],
+  "genres": [
+    "Rock"
+  ],
+  "styles": [
+    "Psychedelic Rock",
+    "Prog Rock"
+  ],
+  "tracklist": [
+    {
+      "position": "",
+      "type_": "index",
+      "title": "Shine On You Crazy Diamond",
+      "extraartists": [
+        {
+          "name": "Dick Parry",
+          "anv": "",
+          "join": "",
+          "role": "Saxophone",
+          "tracks": "",
+          "id": 251575,
+          "resource_url": "https://api.discogs.com/artists/251575"
+        }
+      ],
+      "duration": "13:28",
+      "sub_tracks": [
+        {
+          "position": "1.1a",
+          "type_": "track",
+          "title": "Part I",
+          "duration": ""
+        },
+        {
+          "position": "1.1b",
+          "type_": "track",
+          "title": "Part II",
+          "duration": ""
+        },
+        {
+          "position": "1.1c",
+          "type_": "track",
+          "title": "Part III",
+          "duration": ""
+        },
+        {
+          "position": "1.1d",
+          "type_": "track",
+          "title": "Part IV",
+          "duration": ""
+        },
+        {
+          "position": "1.1e",
+          "type_": "track",
+          "title": "Part V",
+          "duration": ""
+        }
+      ]
+    },
+    {
+      "position": "1.2",
+      "type_": "track",
+      "title": "Welcome To The Machine",
+      "duration": "7:35"
+    },
+    {
+      "position": "2.1",
+      "type_": "track",
+      "title": "Have A Cigar",
+      "extraartists": [
+        {
+          "name": "Roy Harper",
+          "anv": "",
+          "join": "",
+          "role": "Vocals",
+          "tracks": "",
+          "id": 252756,
+          "resource_url": "https://api.discogs.com/artists/252756"
+        }
+      ],
+      "duration": "5:06"
+    },
+    {
+      "position": "2.2",
+      "type_": "track",
+      "title": "Wish You Were Here",
+      "duration": "5:37"
+    },
+    {
+      "position": "",
+      "type_": "index",
+      "title": "Shine On You Crazy Diamond",
+      "extraartists": [
+        {
+          "name": "Dick Parry",
+          "anv": "",
+          "join": "",
+          "role": "Saxophone",
+          "tracks": "",
+          "id": 251575,
+          "resource_url": "https://api.discogs.com/artists/251575"
+        }
+      ],
+      "duration": "12:27",
+      "sub_tracks": [
+        {
+          "position": "2.3a",
+          "type_": "track",
+          "title": "Part VI",
+          "duration": ""
+        },
+        {
+          "position": "2.3b",
+          "type_": "track",
+          "title": "Part VII",
+          "duration": ""
+        },
+        {
+          "position": "2.3c",
+          "type_": "track",
+          "title": "Part VIII",
+          "duration": ""
+        },
+        {
+          "position": "2.3d",
+          "type_": "track",
+          "title": "Part IX",
+          "duration": ""
+        }
+      ]
+    }
+  ],
+  "extraartists": [
+    {
+      "name": "Brian Humphries",
+      "anv": "",
+      "join": "",
+      "role": "Engineer",
+      "tracks": "",
+      "id": 258792,
+      "resource_url": "https://api.discogs.com/artists/258792"
+    },
+    {
+      "name": "Peter James",
+      "anv": "",
+      "join": "",
+      "role": "Engineer [Assistant]",
+      "tracks": "",
+      "id": 277864,
+      "resource_url": "https://api.discogs.com/artists/277864"
+    },
+    {
+      "name": "Roger Waters",
+      "anv": "",
+      "join": "",
+      "role": "Lyrics By",
+      "tracks": "",
+      "id": 110862,
+      "resource_url": "https://api.discogs.com/artists/110862"
+    },
+    {
+      "name": "David Gilmour",
+      "anv": "",
+      "join": "",
+      "role": "Music By",
+      "tracks": "1.1a to 1.1d, 1.2, 2.3a to 2.3d",
+      "id": 110863,
+      "resource_url": "https://api.discogs.com/artists/110863"
+    },
+    {
+      "name": "Richard Wright",
+      "anv": "",
+      "join": "",
+      "role": "Music By",
+      "tracks": "1.1a to 1.1d, 2.3a to 2.3d",
+      "id": 110861,
+      "resource_url": "https://api.discogs.com/artists/110861"
+    },
+    {
+      "name": "Roger Waters",
+      "anv": "",
+      "join": "",
+      "role": "Music By",
+      "tracks": "",
+      "id": 110862,
+      "resource_url": "https://api.discogs.com/artists/110862"
+    },
+    {
+      "name": "Pink Floyd",
+      "anv": "",
+      "join": "",
+      "role": "Producer",
+      "tracks": "",
+      "id": 45467,
+      "resource_url": "https://api.discogs.com/artists/45467"
+    }
+  ],
+  "images": [
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 598
+    },
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 524
+    },
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 623
+    },
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 605
+    },
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 450
+    },
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 600,
+      "height": 450
+    }
+  ],
+  "thumb": "",
+  "estimated_weight": 85,
+  "blocked_from_sale": false
+}
