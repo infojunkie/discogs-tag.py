@@ -10,20 +10,27 @@ import re
 from functools import reduce
 from discogs_tag import __NAME__, __VERSION__
 
+SKIP_KEYS = [
+  'artist',
+  'composer',
+  'title',
+  'position',
+  'date',
+  'subtrack',
+  'album',
+  'genre',
+  'albumartist'
+]
+
 def tag(
   release,
   dir='./',
   dry=False,
   ignore=False,
-  skip_artist=False,
-  skip_title=False,
-  skip_composer=False,
-  skip_position=False,
-  skip_year=False,
-  skip_subtrack=False
+  skip=None
 ):
   """Tag the audio files with the given Discogs release."""
-  options = locals()
+  options = parse_options(locals())
   request = urllib.request.Request(f'https://api.discogs.com/releases/{release}', headers = {
     'User-Agent': f'{__NAME__} {__VERSION__}'
   })
@@ -40,19 +47,17 @@ def copy(
   dir='./',
   dry=False,
   ignore=False,
-  skip_artist=False,
-  skip_title=False,
-  skip_composer=False,
-  skip_position=False,
-  skip_year=False,
-  skip_subtrack=False
+  skip=None
 ):
   """Copy the audio tags from source to destination folders."""
-  options = locals()
+  options = parse_options(locals())
   src_files = sorted(
     glob.glob(os.path.join(glob.escape(src), '**', '*.flac'), recursive=True) +
     glob.glob(os.path.join(glob.escape(src), '**', '*.mp3'), recursive=True)
   )
+  if not src_files:
+    raise Exception(f'No source files found at {src}. Aborting.')
+
   dst_files = sorted(
     glob.glob(os.path.join(glob.escape(dir), '**', '*.flac'), recursive=True) +
     glob.glob(os.path.join(glob.escape(dir), '**', '*.mp3'), recursive=True)
@@ -70,6 +75,11 @@ def read_metadata(files, options):
       return audio['tracknumber'][0].split('/')[0].lstrip('0')
     except:
       return str(n)
+  def safe_year(audio):
+    try:
+      return int(audio['date'][0].split('-')[0])
+    except:
+      return None
 
   tracklist = []
   for n, file in enumerate(files):
@@ -77,13 +87,18 @@ def read_metadata(files, options):
     tracklist.append({
       'type_': 'track',
       'position': safe_position(audio, n+1),
-      'artists': [{
-        'anv': audio['artist'][0]
-      }],
-      'title': audio['title'][0],
-      'year': audio['date'][0],
+      'artists': [{ 'anv': artist } for artist in audio.get('artist', [])],
+      'title': audio.get('title', [''])[0],
+      'extraartists': [{
+        'role': 'Written-By',
+        'anv': composer
+      } for composer in audio.get('composer', [])]
     })
   return {
+    'artists': [{ 'anv': artist } for artist in audio.get('albumartist', [])],
+    'title': audio.get('album', [''])[0],
+    'year': safe_year(audio),
+    'genres': audio.get('genre', []),
     'tracklist': sorted(tracklist, key=lambda track: int(track['position']))
   }
 
@@ -122,6 +137,14 @@ def apply_metadata(release, files, options):
   if not options['dry']:
     print(f'Processed {len(files)} audio files.')
 
+def parse_options(options):
+  for skip in SKIP_KEYS:
+    options['skip_' + skip] = False
+  if options['skip'] is not None:
+    for skip in options['skip'].lower():
+      options['skip_' + skip] = True
+  return options
+
 def merge_metadata(release, track, audio, options):
   def artist_name(artist):
     name = None
@@ -143,6 +166,26 @@ def merge_metadata(release, track, audio, options):
     if artists:
       audio['artist'] = ', '.join(artists)
 
+  if not options['skip_albumartist']:
+    artists = []
+    if 'artists' in release:
+      artists += [artist_name(artist) for artist in release['artists']]
+    if artists:
+      audio['albumartist'] = ', '.join(artists)
+
+  if not options['skip_genre']:
+    genres = []
+    if 'genres' in release:
+      genres += [genre for genre in release['genres']]
+    if 'styles' in release:
+      genres += [genre for genre in release['styles']]
+    if genres:
+      audio['genre'] = ', '.join(genres)
+
+  if not options['skip_album']:
+    if 'title' in release:
+      audio['album'] = release['title']
+
   if not options['skip_composer']:
     composers = [artist_name(composer) for composer in filter(lambda a: a['role'].casefold() == 'Written-By'.casefold(), track['extraartists'])] if 'extraartists' in track else None
     if composers:
@@ -154,7 +197,7 @@ def merge_metadata(release, track, audio, options):
     if len(positions) > 1:
       audio['discnumber'] = positions[0]
 
-  if not options['skip_year']:
+  if not options['skip_date']:
     if 'year' in release and release['year']:
       audio['date'] = str(release['year'])
 
