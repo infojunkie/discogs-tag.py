@@ -16,7 +16,8 @@ SYNOPSIS
     discogs-tag tag RELEASE <flags>
 
 DESCRIPTION
-    Tag the audio files with the given Discogs release.
+    The skip flag can take one or more of the following values, comma-separated:
+        artist, composer, title, position, date, subtrack, album, genre, albumartist
 
 POSITIONAL ARGUMENTS
     RELEASE
@@ -28,22 +29,13 @@ FLAGS
         Default: False
     -i, --ignore=IGNORE
         Default: False
-    --skip_artist=SKIP_ARTIST
-        Default: False
-    --skip_title=SKIP_TITLE
-        Default: False
-    --skip_composer=SKIP_COMPOSER
-        Default: False
-    --skip_position=SKIP_POSITION
-        Default: False
-    --skip_year=SKIP_YEAR
-        Default: False
-    --skip_subtrack=SKIP_SUBTRACK
-        Default: False
+    -s, --skip=SKIP
+        Type: Optional[]
+        Default: None
 
 NOTES
     You can also use flags syntax for POSITIONAL ARGUMENTS
-```
+q```
 ```shell
 NAME
     discogs-tag copy - Copy the audio tags from source to destination folders.
@@ -52,7 +44,8 @@ SYNOPSIS
     discogs-tag copy SRC <flags>
 
 DESCRIPTION
-    Copy the audio tags from source to destination folders.
+    The skip flag can take one or more of the following values, comma-separated:
+        artist, composer, title, position, date, subtrack, album, genre, albumartist
 
 POSITIONAL ARGUMENTS
     SRC
@@ -64,18 +57,9 @@ FLAGS
         Default: False
     -i, --ignore=IGNORE
         Default: False
-    --skip_artist=SKIP_ARTIST
-        Default: False
-    --skip_title=SKIP_TITLE
-        Default: False
-    --skip_composer=SKIP_COMPOSER
-        Default: False
-    --skip_position=SKIP_POSITION
-        Default: False
-    --skip_year=SKIP_YEAR
-        Default: False
-    --skip_subtrack=SKIP_SUBTRACK
-        Default: False
+    -s, --skip=SKIP
+        Type: Optional[]
+        Default: None
 
 NOTES
     You can also use flags syntax for POSITIONAL ARGUMENTS

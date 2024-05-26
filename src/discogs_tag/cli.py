@@ -31,7 +31,12 @@ def tag(
   ignore=False,
   skip=None
 ):
-  """Tag the audio files with the given Discogs release."""
+  """Tag the audio files with the given Discogs release.
+
+  The skip flag can take one or more of the following values, comma-separated:
+      artist, composer, title, position, date, subtrack, album, genre, albumartist
+
+  """
   options = parse_options(locals())
   request = urllib.request.Request(f'https://api.discogs.com/releases/{release}', headers = {
     'User-Agent': f'{__NAME__} {__VERSION__}'
@@ -48,11 +53,14 @@ def copy(
   ignore=False,
   skip=None
 ):
-  """Copy the audio tags from source to destination folders."""
+  """Copy the audio tags from source to destination folders.
+
+  The skip flag can take one or more of the following values, comma-separated:
+      artist, composer, title, position, date, subtrack, album, genre, albumartist
+
+  """
   options = parse_options(locals())
   src_files = get_files(src)
-  pprint(src_files)
-  return
   if not src_files:
     raise Exception(f'No source files found at {src}. Aborting.')
 
