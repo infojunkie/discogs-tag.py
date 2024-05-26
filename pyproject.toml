@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "discogs-tag"
-version = "0.3.0"
+version = "0.3.1"
 description = "A rudimentary audio tagger based on Discogs metadata."
 authors = ["infojunkie <karim.ratib@gmail.com>"]
 readme = "README.md"

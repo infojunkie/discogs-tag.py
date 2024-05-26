@@ -1,6 +1,17 @@
-from discogs_tag.cli import merge_metadata, apply_metadata, parse_options
+from discogs_tag.cli import merge_metadata, apply_metadata, parse_options, get_files
 import pytest
 import json
+
+def test_get_files():
+  files = get_files('tests/glob')
+  assert files == [
+    'tests/glob/01.mp3',
+    'tests/glob/02.flac',
+    'tests/glob/04.flac',
+    'tests/glob/05.mp3',
+    'tests/glob/sub1/01.flac',
+    'tests/glob/sub2/01.mp3'
+  ]
 
 def test_merge_metadata():
   audio = {}

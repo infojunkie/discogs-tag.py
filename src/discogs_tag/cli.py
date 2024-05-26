@@ -22,6 +22,8 @@ SKIP_KEYS = [
   'albumartist'
 ]
 
+AUDIO_EXTENSIONS = ['flac', 'mp3']
+
 def tag(
   release,
   dir='./',
@@ -36,10 +38,7 @@ def tag(
   })
   with urllib.request.urlopen(request) as response:
     data = json.load(response)
-    files = sorted(
-      glob.glob(os.path.join(glob.escape(dir), '**', '*.flac'), recursive=True) +
-      glob.glob(os.path.join(glob.escape(dir), '**', '*.mp3'), recursive=True)
-    )
+    files = get_files(dir)
     apply_metadata(data, files, options)
 
 def copy(
@@ -51,18 +50,14 @@ def copy(
 ):
   """Copy the audio tags from source to destination folders."""
   options = parse_options(locals())
-  src_files = sorted(
-    glob.glob(os.path.join(glob.escape(src), '**', '*.flac'), recursive=True) +
-    glob.glob(os.path.join(glob.escape(src), '**', '*.mp3'), recursive=True)
-  )
+  src_files = get_files(src)
+  pprint(src_files)
+  return
   if not src_files:
     raise Exception(f'No source files found at {src}. Aborting.')
 
-  dst_files = sorted(
-    glob.glob(os.path.join(glob.escape(dir), '**', '*.flac'), recursive=True) +
-    glob.glob(os.path.join(glob.escape(dir), '**', '*.mp3'), recursive=True)
-  )
   data = read_metadata(src_files, options)
+  dst_files = get_files(dir)
   if options['dry']:
     pprint(data)
   else:
@@ -136,6 +131,11 @@ def apply_metadata(release, files, options):
 
   if not options['dry']:
     print(f'Processed {len(files)} audio files.')
+
+def get_files(dir):
+  return sorted(reduce(lambda xs, ys: xs + ys, [
+    glob.glob(os.path.join(glob.escape(dir), '**', f"*.{ext}"), recursive=True) for ext in AUDIO_EXTENSIONS
+  ]))
 
 def parse_options(options):
   for skip in SKIP_KEYS:
