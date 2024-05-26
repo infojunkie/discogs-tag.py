@@ -35,7 +35,7 @@ FLAGS
 
 NOTES
     You can also use flags syntax for POSITIONAL ARGUMENTS
-q```
+```
 ```shell
 NAME
     discogs-tag copy - Copy the audio tags from source to destination folders.
