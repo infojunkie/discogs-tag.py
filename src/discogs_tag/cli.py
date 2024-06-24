@@ -248,7 +248,7 @@ def rename_path(src_root, audio, format, options):
   # Expand tags in each path component.
   paths = []
   for dir in format.split('/')[:-1]:
-    paths.append(sanitize_filename(rename_component(audio, dir, options)))
+    paths.append(sanitize_filename(rename_component(audio, dir, options), replacement_text='-'))
   if not paths:
     return src_root, src_root
 
@@ -276,7 +276,7 @@ def rename_file(src_file, dst_path, audio, format, options):
     filename += ext
 
     # Sanitize the filename.
-    filename = sanitize_filename(filename)
+    filename = sanitize_filename(filename, replacement_text='-')
 
   # Add the original path.
   dst_file = os.path.join(dst_path, filename)

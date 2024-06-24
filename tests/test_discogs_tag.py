@@ -108,6 +108,17 @@ def test_rename_path():
     'title': ['Title'],
     'date': ['2024']
   }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
+  assert ('/src/path/Album Artist - (2024) Album1 - Album2', '/src/path/Album Artist - (2024) Album1 - Album2') == rename_path('/src/path/from', {
+    'artist': ['Artist'],
+    'albumartist': ['Album Artist'],
+    'album': ['Album1 / Album2'],
+    'composer': ['Composer'],
+    'discnumber': ['1'],
+    'genre': ['Genre'],
+    'tracknumber': [2],
+    'title': ['Title'],
+    'date': ['2024']
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
   assert ('/src/path/from', '/src/path/from') == rename_path('/src/path/from', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
@@ -143,6 +154,17 @@ def test_rename_file():
     'title': ['Title'],
     'date': ['2024']
   }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
+  assert '/dest/path/to/1-02 Artist1 - Artist2 - Title1 - Title2.flac' == rename_file('/src/path/from/test.flac', '/dest/path/to', {
+    'artist': ['Artist1 / Artist2'],
+    'albumartist': ['Album Artist'],
+    'album': ['Album'],
+    'composer': ['Composer'],
+    'discnumber': ['1'],
+    'genre': ['Genre'],
+    'tracknumber': [2],
+    'title': ['Title1 / Title2'],
+    'date': ['2024']
+  }, '%z - (%y) %b/%d-%n %a - %t', parse_options({ 'dry': True, 'ignore': False }))
   assert '/dest/path/to/test.flac' == rename_file('/src/path/from/test.flac', '/dest/path/to', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
