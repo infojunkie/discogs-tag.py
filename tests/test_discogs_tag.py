@@ -1,12 +1,13 @@
 from discogs_tag.cli import (
+  list_files,
   read_metadata,
   merge_metadata,
   apply_metadata,
   parse_options,
-  list_files,
   rename_component,
   rename_path,
-  rename_file
+  rename_file,
+  get_release
 )
 import pytest
 import json
@@ -213,3 +214,8 @@ def test_rename_file():
     'title': ['Title'],
     'date': ['2024']
   }, '%z - (%y) %b/', parse_options({ 'dry': True, 'ignore': False })) == '/dest/path/to/test.flac'
+
+def test_get_release():
+  assert json.load(get_release('file:tests/16215626.json'))['id'] == 16215626
+  assert json.load(get_release('16215626'))['id'] == 16215626
+  assert json.load(get_release('https://api.discogs.com/releases/16215626'))['id'] == 16215626

@@ -36,8 +36,10 @@ SYNOPSIS
     discogs-tag tag RELEASE <flags>
 
 DESCRIPTION
-    The RELEASE is the numeric portion of a Discogs release URL, e.g. 16215626 in
-        https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here
+    The RELEASE can be one of the following:
+        - A full Discogs release URL, e.g. https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here
+        - The numeric portion of the above, e.g. 16215626
+        - A local file URI pointing to a release JSON file
 
     The SKIP flag can take one or more of the following values, comma-separated:
         artist, composer, title, position, date, subtrack, album, genre, albumartist

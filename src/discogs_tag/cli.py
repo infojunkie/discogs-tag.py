@@ -6,6 +6,7 @@ import os
 import glob
 import sys
 import re
+from urllib.parse import urlparse
 from pprint import pprint
 from functools import reduce
 from contextlib import suppress
@@ -35,21 +36,20 @@ def tag(
 ):
   """Tag the audio files with the given Discogs release.
 
-  The RELEASE is the numeric portion of a Discogs release URL, e.g. 16215626 in
-      https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here
+  The RELEASE can be one of the following:
+      - A full Discogs release URL, e.g. https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here
+      - The numeric portion of the above, e.g. 16215626
+      - A local file URI pointing to a release JSON file
 
   The SKIP flag can take one or more of the following values, comma-separated:
       artist, composer, title, position, date, subtrack, album, genre, albumartist
 
   """
   options = parse_options(locals())
-  request = urllib.request.Request(f'https://api.discogs.com/releases/{release}', headers = {
-    'User-Agent': f'{__NAME__} {__VERSION__}'
-  })
-  with urllib.request.urlopen(request) as response:
-    data = json.load(response)
-    files = list_files(dir)
-    apply_metadata(data, files, options)
+  response = get_release(release)
+  data = json.load(response)
+  files = list_files(dir)
+  apply_metadata(data, files, options)
 
 def copy(
   src,
@@ -144,6 +144,18 @@ def rename(
   else:
     with suppress(OSError):
       os.rmdir(src_root)
+
+def get_release(release):
+  """ Get release JSON from Discogs URL, file URI or Discogs release number. """
+  headers = {
+    'User-Agent': f'{__NAME__} {__VERSION__}'
+  }
+  try:
+    request = urllib.request.Request(release, headers=headers)
+    return urllib.request.urlopen(request)
+  except Exception:
+    request = urllib.request.Request(f'https://api.discogs.com/releases/{release}', headers=headers)
+    return urllib.request.urlopen(request)
 
 def read_metadata(audios, options):
   """Read metadata from audio files and return data structure that mimics Discogs release."""
