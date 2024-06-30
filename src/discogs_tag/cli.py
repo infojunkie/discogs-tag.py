@@ -69,7 +69,8 @@ def copy(
   if not src_files:
     raise Exception(f'No source files found at {src}. Aborting.')
 
-  data = read_metadata(src_files, options)
+  audios = [mutagen.File(file, easy=True) for file in src_files]
+  data = read_metadata(audios, options)
   dst_files = list_files(dir)
   if options['dry']:
     pprint(data)
@@ -144,11 +145,18 @@ def rename(
     with suppress(OSError):
       os.rmdir(src_root)
 
-def read_metadata(files, options):
+def read_metadata(audios, options):
   """Read metadata from audio files and return data structure that mimics Discogs release."""
   def safe_position(audio, n):
     try:
-      return audio['tracknumber'][0].split('/')[0].lstrip('0')
+      position = audio.get('tracknumber', [str(n)])[0].split('/')
+      discnumber = audio.get('discnumber')
+      if discnumber:
+        position.insert(1, discnumber[0])
+      if len(position) == 1:
+        return position[0].lstrip('0')
+      else:
+        return position[1].lstrip('0') + '-' + position[0].lstrip('0')
     except:
       return str(n)
 
@@ -159,8 +167,7 @@ def read_metadata(files, options):
       return None
 
   tracklist = []
-  for n, file in enumerate(files):
-    audio = mutagen.File(file, easy=True)
+  for n, audio in enumerate(audios):
     tracklist.append({
       'type_': 'track',
       'position': safe_position(audio, n+1),
@@ -176,7 +183,7 @@ def read_metadata(files, options):
     'title': audio.get('album', [''])[0],
     'year': safe_year(audio),
     'genres': audio.get('genre', []),
-    'tracklist': sorted(tracklist, key=lambda track: int(track['position']))
+    'tracklist': sorted(tracklist, key=lambda track: int(track['position'].split('-')[0]))
   }
 
 def apply_metadata(release, files, options):

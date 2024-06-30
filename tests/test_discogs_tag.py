@@ -1,4 +1,13 @@
-from discogs_tag.cli import merge_metadata, apply_metadata, parse_options, list_files, rename_component, rename_path, rename_file
+from discogs_tag.cli import (
+  read_metadata,
+  merge_metadata,
+  apply_metadata,
+  parse_options,
+  list_files,
+  rename_component,
+  rename_path,
+  rename_file
+)
 import pytest
 import json
 
@@ -12,6 +21,34 @@ def test_list_files():
     'tests/glob/sub1/01.flac',
     'tests/glob/sub2/01.mp3'
   ]
+
+def test_read_metadata():
+  release = read_metadata([{
+    'artist': ['Artist'],
+    'albumartist': ['Album Artist'],
+    'album': ['Album'],
+    'composer': ['Composer'],
+    'discnumber': ['1'],
+    'genre': ['Genre'],
+    'tracknumber': ['2'],
+    'title': ['Title'],
+    'date': ['2024']
+  }], {})
+  assert release['title'] == 'Album'
+  assert release['artists'] == [{ 'anv': 'Album Artist' }]
+  assert release['tracklist'][0]['position'] == '1-2'
+  assert release['tracklist'][0]['title'] == 'Title'
+  release = read_metadata([{
+    'artist': ['Artist'],
+    'albumartist': ['Album Artist'],
+    'album': ['Album'],
+    'composer': ['Composer'],
+    'genre': ['Genre'],
+    'tracknumber': ['2'],
+    'title': ['Title'],
+    'date': ['2024']
+  }], {})
+  assert release['tracklist'][0]['position'] == '2'
 
 def test_merge_metadata():
   audio = merge_metadata({
@@ -61,7 +98,7 @@ def test_count_subtracks():
     assert "Expecting 18 files" in str(error.value)
 
 def test_rename_component():
-  assert '1-02 Title' == rename_component({
+  assert rename_component({
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
     'album': ['Album'],
@@ -71,8 +108,8 @@ def test_rename_component():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
-  assert '02 Title' == rename_component({
+  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == '1-02 Title'
+  assert rename_component({
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
     'album': ['Album'],
@@ -81,7 +118,7 @@ def test_rename_component():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
+  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == '02 Title'
   with pytest.raises(IndexError) as error:
     rename_component({
       'artist': ['Artist'],
@@ -97,7 +134,7 @@ def test_rename_component():
   assert "list index out of range" in str(error.value)
 
 def test_rename_path():
-  assert ('/src/path/Album Artist - (2024) Album', '/src/path/Album Artist - (2024) Album') == rename_path('/src/path/from', {
+  assert rename_path('/src/path/from', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
     'album': ['Album'],
@@ -107,8 +144,8 @@ def test_rename_path():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
-  assert ('/src/path/Album Artist - (2024) Album1 - Album2', '/src/path/Album Artist - (2024) Album1 - Album2') == rename_path('/src/path/from', {
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/Album Artist - (2024) Album', '/src/path/Album Artist - (2024) Album')
+  assert rename_path('/src/path/from', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
     'album': ['Album1 / Album2'],
@@ -118,8 +155,8 @@ def test_rename_path():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
-  assert ('/src/path/from', '/src/path/from') == rename_path('/src/path/from', {
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/Album Artist - (2024) Album1 - Album2', '/src/path/Album Artist - (2024) Album1 - Album2')
+  assert rename_path('/src/path/from', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
     'album': ['Album'],
@@ -129,8 +166,8 @@ def test_rename_path():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
-  assert ('/src/path/Album Artist/(2024) Album', '/src/path/Album Artist') == rename_path('/src/path/from', {
+  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/from', '/src/path/from')
+  assert rename_path('/src/path/from', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
     'album': ['Album'],
@@ -140,10 +177,10 @@ def test_rename_path():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z/(%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
+  }, '%z/(%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/Album Artist/(2024) Album', '/src/path/Album Artist')
 
 def test_rename_file():
-  assert '/dest/path/to/1-02 Title.flac' == rename_file('/src/path/from/test.flac', '/dest/path/to', {
+  assert rename_file('/src/path/from/test.flac', '/dest/path/to', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
     'album': ['Album'],
@@ -153,8 +190,8 @@ def test_rename_file():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
-  assert '/dest/path/to/1-02 Artist1 - Artist2 - Title1 - Title2.flac' == rename_file('/src/path/from/test.flac', '/dest/path/to', {
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == '/dest/path/to/1-02 Title.flac'
+  assert rename_file('/src/path/from/test.flac', '/dest/path/to', {
     'artist': ['Artist1 / Artist2'],
     'albumartist': ['Album Artist'],
     'album': ['Album'],
@@ -164,8 +201,8 @@ def test_rename_file():
     'tracknumber': [2],
     'title': ['Title1 / Title2'],
     'date': ['2024']
-  }, '%z - (%y) %b/%d-%n %a - %t', parse_options({ 'dry': True, 'ignore': False }))
-  assert '/dest/path/to/test.flac' == rename_file('/src/path/from/test.flac', '/dest/path/to', {
+  }, '%z - (%y) %b/%d-%n %a - %t', parse_options({ 'dry': True, 'ignore': False })) == '/dest/path/to/1-02 Artist1 - Artist2 - Title1 - Title2.flac'
+  assert rename_file('/src/path/from/test.flac', '/dest/path/to', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
     'album': ['Album'],
@@ -175,4 +212,4 @@ def test_rename_file():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z - (%y) %b/', parse_options({ 'dry': True, 'ignore': False }))
+  }, '%z - (%y) %b/', parse_options({ 'dry': True, 'ignore': False })) == '/dest/path/to/test.flac'
