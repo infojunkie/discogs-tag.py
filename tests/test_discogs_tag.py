@@ -45,7 +45,18 @@ def test_read_metadata():
     'album': ['Album'],
     'composer': ['Composer'],
     'genre': ['Genre'],
-    'tracknumber': ['2'],
+    'tracknumber': ['0002'],
+    'title': ['Title'],
+    'date': ['2024']
+  }], {})
+  assert release['tracklist'][0]['position'] == '2'
+  release = read_metadata([{
+    'artist': ['Artist'],
+    'albumartist': ['Album Artist'],
+    'album': ['Album'],
+    'composer': ['Composer'],
+    'genre': ['Genre'],
+    'tracknumber': ['2/10'],
     'title': ['Title'],
     'date': ['2024']
   }], {})

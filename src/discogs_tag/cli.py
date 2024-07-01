@@ -161,14 +161,12 @@ def read_metadata(audios, options):
   """Read metadata from audio files and return data structure that mimics Discogs release."""
   def safe_position(audio, n):
     try:
-      position = audio.get('tracknumber', [str(n)])[0].split('/')
+      tracknumber = audio.get('tracknumber', [str(n)])[0].split('/')
       discnumber = audio.get('discnumber')
       if discnumber:
-        position.insert(1, discnumber[0])
-      if len(position) == 1:
-        return position[0].lstrip('0')
+        return discnumber[0].lstrip('0') + '-' + tracknumber[0].lstrip('0')
       else:
-        return position[1].lstrip('0') + '-' + position[0].lstrip('0')
+        return tracknumber[0].lstrip('0')
     except:
       return str(n)
 
