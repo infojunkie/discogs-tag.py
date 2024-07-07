@@ -171,6 +171,16 @@ def test_rename_path():
   assert rename_path('/src/path/from', {
     'artist': ['Artist'],
     'albumartist': ['Album Artist'],
+    'album': ['Album1 / Album2'],
+    'composer': ['Composer'],
+    'discnumber': ['1'],
+    'genre': ['Genre'],
+    'tracknumber': [2],
+    'title': ['Title']
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/Album Artist - Album1 - Album2', '/src/path/Album Artist - Album1 - Album2')
+  assert rename_path('/src/path/from', {
+    'artist': ['Artist'],
+    'albumartist': ['Album Artist'],
     'album': ['Album'],
     'composer': ['Composer'],
     'discnumber': ['1'],

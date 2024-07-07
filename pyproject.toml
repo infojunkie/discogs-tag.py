@@ -1,17 +1,18 @@
 [tool.poetry]
 name = "discogs-tag"
-version = "0.5.1"
-description = "A rudimentary audio tagger based on Discogs metadata."
+version = "1.0.0"
+description = "An audio tagger based on Discogs metadata."
 authors = ["infojunkie <karim.ratib@gmail.com>"]
 readme = "README.md"
 packages = [{include = "discogs_tag", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fire = "^0.5.0"
 mutagen = "^1.46.0"
 importlib-metadata = "^6.8.0"
 pathvalidate = "^3.2.0"
+fire = "^0.6.0"
+regex = "^2024.5.15"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.0.0"

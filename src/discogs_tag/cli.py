@@ -5,7 +5,7 @@ import json
 import os
 import glob
 import sys
-import re
+import regex as re
 from urllib.parse import urlparse
 from pprint import pprint
 from functools import reduce
@@ -233,8 +233,7 @@ def apply_metadata(release, files, options):
 
 def rename_component(audio, format, options):
   """ Rename a path component based on format string with tags from the audio metadata. """
-  component = format
-  for tag, fn in {
+  tags = {
     '%a': (lambda audio: audio.get('artist', [''])[0]),
     '%z': (lambda audio: audio.get('albumartist', [''])[0]),
     '%b': (lambda audio: audio.get('album', [''])[0]),
@@ -244,20 +243,32 @@ def rename_component(audio, format, options):
     '%n': (lambda audio: '%02d' % int(audio.get('tracknumber', [0])[0])),
     '%t': (lambda audio: audio.get('title', [''])[0]),
     '%y': (lambda audio: audio.get('date', [''])[0])
-  }.items():
-    if tag in component:
+  }
+
+  # First, remove from format string all empty tags and neighbouring characters.
+  for tag, fn in tags.items():
+    if tag in format:
       try:
         replace = fn(audio).strip()
         # If replacement is empty, also remove format chars until next tag.
         if not replace:
-          component = re.sub(re.escape(tag) + r"[^%]*", '', component)
-        else:
-          component = component.replace(tag, replace)
+          format = re.sub(r"\p{Ps}?" + re.escape(tag) + r"[^%]*", '', format)
       except Exception as e:
         if options['ignore']:
           print(e, file=sys.stderr)
         else:
           raise e
+
+  # Now replace tags with metadata values.
+  component = format
+  for tag, fn in tags.items():
+    if tag in format:
+      try:
+        replace = fn(audio).strip()
+        component = component.replace(tag, replace)
+      except Exception as e:
+        pass
+
   return component
 
 def rename_path(src_root, audio, format, options):

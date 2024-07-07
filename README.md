@@ -1,7 +1,7 @@
 discogs-tag
 ===========
 
-A rudimentary audio tagger based on Discogs metadata.
+An audio tagger based on Discogs metadata.
 
 # Installation
 - Install [`poetry`](https://python-poetry.org/docs/#installation)
