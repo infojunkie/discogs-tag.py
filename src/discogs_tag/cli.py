@@ -150,6 +150,9 @@ def get_release(release):
   headers = {
     'User-Agent': f'{__NAME__} {__VERSION__}'
   }
+  match = re.match(r"https://www\.discogs\.com/release/(\d*)", release)
+  if match:
+    release = f'https://api.discogs.com/releases/{match.group(1)}'
   try:
     request = urllib.request.Request(release, headers=headers)
     return urllib.request.urlopen(request)

@@ -240,3 +240,4 @@ def test_get_release():
   assert json.load(get_release('file:tests/16215626.json'))['id'] == 16215626
   assert json.load(get_release('16215626'))['id'] == 16215626
   assert json.load(get_release('https://api.discogs.com/releases/16215626'))['id'] == 16215626
+  assert json.load(get_release('https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here'))['id'] == 16215626
