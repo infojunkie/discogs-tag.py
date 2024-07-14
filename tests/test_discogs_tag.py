@@ -81,14 +81,48 @@ def test_merge_metadata():
       'name': 'Guitarist'
     }, {
       'role': 'Written-By',
-      'name': 'Composer'
+      'name': 'Composer 1'
+    }, {
+      'role': 'Composed By',
+      'name': 'Composer 2'
     }]
   }, { 'title': 'Some other title' }, parse_options({ 'skip': None }))
   assert audio['title'] == 'Title'
-  assert audio['artist'] == 'Artist 1, Artist 2, Artist 3, Guitarist'
+  assert audio['artist'] == 'Artist 1, Artist 2, Artist 3'
   assert audio['discnumber'] == '1'
   assert audio['tracknumber'] == '02'
-  assert audio['composer'] == 'Composer'
+  assert audio['composer'] == 'Composer 1, Composer 2'
+  assert audio['date'] == '2002'
+
+  audio = merge_metadata({
+    'year': 2002,
+    'artists': [{
+      'anv': 'Artist 1'
+    }, {
+      'name': 'Artist 2'
+    }, {
+      'anv': '',
+      'name': 'Artist 3 (56)'
+    }],
+  }, {
+    'title': 'Title',
+    'position': '1-02',
+    'extraartists': [{
+      'role': 'Guitar',
+      'name': 'Guitarist'
+    }, {
+      'role': 'Written-By',
+      'name': 'Composer 1'
+    }, {
+      'role': 'Composed By',
+      'name': 'Composer 2'
+    }]
+  }, { 'title': 'Some other title' }, parse_options({ 'skip': None }))
+  assert audio['title'] == 'Title'
+  assert audio['artist'] == 'Artist 1, Artist 2, Artist 3'
+  assert audio['discnumber'] == '1'
+  assert audio['tracknumber'] == '02'
+  assert audio['composer'] == 'Composer 1, Composer 2'
   assert audio['date'] == '2002'
 
 def test_apply_metadata():

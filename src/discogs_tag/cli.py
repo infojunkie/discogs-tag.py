@@ -25,6 +25,11 @@ SKIP_KEYS = [
   'albumartist'
 ]
 
+COMPOSER_TAGS = [
+  'Written-By',
+  'Composed By'
+]
+
 AUDIO_EXTENSIONS = ['flac', 'mp3']
 
 def tag(
@@ -187,7 +192,7 @@ def read_metadata(audios, options):
       'artists': [{ 'anv': artist } for artist in audio.get('artist', [])],
       'title': audio.get('title', [''])[0],
       'extraartists': [{
-        'role': 'Written-By',
+        'role': 'Composed By',
         'anv': composer
       } for composer in audio.get('composer', [])]
     })
@@ -347,8 +352,8 @@ def merge_metadata(release, track, audio, options):
     artists = []
     if 'artists' in track:
       artists += [artist_name(artist) for artist in track['artists']]
-    if 'extraartists' in track:
-      artists += [artist_name(artist) for artist in filter(lambda a: a['role'].casefold() != 'Written-By'.casefold(), track['extraartists'])]
+    if not artists:
+      artists += [artist_name(artist) for artist in release['artists']]
     if artists:
       audio['artist'] = ', '.join(artists)
 
@@ -373,7 +378,7 @@ def merge_metadata(release, track, audio, options):
       audio['album'] = release['title']
 
   if not options['skip_composer']:
-    composers = [artist_name(composer) for composer in filter(lambda a: a['role'].casefold() == 'Written-By'.casefold(), track['extraartists'])] if 'extraartists' in track else None
+    composers = [artist_name(composer) for composer in filter(lambda a: a['role'].casefold() in [(lambda c: c.casefold())(c) for c in COMPOSER_TAGS], track['extraartists'])] if 'extraartists' in track else None
     if composers:
       audio['composer'] = ', '.join(composers)
 
