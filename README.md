@@ -3,7 +3,9 @@ discogs-tag
 
 An audio tagger based on Discogs metadata.
 
-# Installation
+[![PyPI Version](https://img.shields.io/pypi/v/discogs-tag.svg)](https://pypi.org/project/discogs-tag/)
+
+# Development
 - Install [`poetry`](https://python-poetry.org/docs/#installation)
 - `poetry install && poetry build && pip install .`
 
