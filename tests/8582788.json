@@ -1,0 +1,501 @@
+{
+  "id": 8582788,
+  "status": "Accepted",
+  "year": 1993,
+  "resource_url": "https://api.discogs.com/releases/8582788",
+  "uri": "https://www.discogs.com/release/8582788-Vinicius-De-Moraes-Minha-Hist%C3%B3ria",
+  "artists": [
+    {
+      "name": "Vinicius De Moraes",
+      "anv": "",
+      "join": "",
+      "role": "",
+      "tracks": "",
+      "id": 315789,
+      "resource_url": "https://api.discogs.com/artists/315789"
+    }
+  ],
+  "artists_sort": "Vinicius De Moraes",
+  "labels": [
+    {
+      "name": "Philips",
+      "catno": "510457-2",
+      "entity_type": "1",
+      "entity_type_name": "Label",
+      "id": 7704,
+      "resource_url": "https://api.discogs.com/labels/7704"
+    },
+    {
+      "name": "PolyGram",
+      "catno": "510457-2",
+      "entity_type": "1",
+      "entity_type_name": "Label",
+      "id": 8742,
+      "resource_url": "https://api.discogs.com/labels/8742"
+    }
+  ],
+  "series": [
+    {
+      "name": "Minha História",
+      "catno": "",
+      "entity_type": "2",
+      "entity_type_name": "Series",
+      "id": 545144,
+      "resource_url": "https://api.discogs.com/labels/545144"
+    }
+  ],
+  "companies": [
+    {
+      "name": "PolyGram do Brasil Ltda.",
+      "catno": "",
+      "entity_type": "6",
+      "entity_type_name": "Licensed From",
+      "id": 290833,
+      "resource_url": "https://api.discogs.com/labels/290833"
+    },
+    {
+      "name": "Microservice - Microfilmagens e Reproduções Técnicas da Amazônia Ltda.",
+      "catno": "",
+      "entity_type": "10",
+      "entity_type_name": "Manufactured By",
+      "id": 360144,
+      "resource_url": "https://api.discogs.com/labels/360144"
+    },
+    {
+      "name": "Fonobrás, Distribuidora Fonográfica Ltda.",
+      "catno": "",
+      "entity_type": "9",
+      "entity_type_name": "Distributed By",
+      "id": 491539,
+      "resource_url": "https://api.discogs.com/labels/491539"
+    }
+  ],
+  "formats": [
+    {
+      "name": "CD",
+      "qty": "1",
+      "descriptions": [
+        "Compilation",
+        "Limited Edition",
+        "Remastered"
+      ]
+    }
+  ],
+  "data_quality": "Needs Vote",
+  "community": {
+    "have": 78,
+    "want": 2,
+    "rating": {
+      "count": 5,
+      "average": 4.2
+    },
+    "submitter": {
+      "username": "Blinge",
+      "resource_url": "https://api.discogs.com/users/Blinge"
+    },
+    "contributors": [
+      {
+        "username": "Blinge",
+        "resource_url": "https://api.discogs.com/users/Blinge"
+      },
+      {
+        "username": "molitorbr",
+        "resource_url": "https://api.discogs.com/users/molitorbr"
+      },
+      {
+        "username": "lbamaral",
+        "resource_url": "https://api.discogs.com/users/lbamaral"
+      },
+      {
+        "username": "_Ivo_",
+        "resource_url": "https://api.discogs.com/users/_Ivo_"
+      },
+      {
+        "username": "Picaba49",
+        "resource_url": "https://api.discogs.com/users/Picaba49"
+      }
+    ],
+    "data_quality": "Needs Vote",
+    "status": "Accepted"
+  },
+  "format_quantity": 1,
+  "date_added": "2016-05-29T02:05:38-07:00",
+  "date_changed": "2020-10-26T10:48:33-07:00",
+  "num_for_sale": 12,
+  "lowest_price": 3.15,
+  "master_id": 1533477,
+  "master_url": "https://api.discogs.com/masters/1533477",
+  "title": "Minha História",
+  "country": "Brazil",
+  "released": "1993",
+  "released_formatted": "1993",
+  "identifiers": [
+    {
+      "type": "Barcode",
+      "value": "731451045721"
+    },
+    {
+      "type": "SPARS Code",
+      "value": "AAD"
+    }
+  ],
+  "genres": [
+    "Jazz",
+    "Latin"
+  ],
+  "styles": [
+    "Bossa Nova",
+    "Samba",
+    "MPB"
+  ],
+  "tracklist": [
+    {
+      "position": "",
+      "type_": "index",
+      "artists": [
+        {
+          "name": "Toquinho & Vinicius",
+          "anv": "Toquinho/Vinícius De Moraes",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 961600,
+          "resource_url": "https://api.discogs.com/artists/961600"
+        }
+      ],
+      "title": "Pot-Pourri No. 4",
+      "duration": "6:38",
+      "sub_tracks": [
+        {
+          "position": "1.1",
+          "type_": "track",
+          "title": "Como Dizia O Poeta",
+          "duration": ""
+        },
+        {
+          "position": "1.2",
+          "type_": "track",
+          "title": "Testamento",
+          "duration": ""
+        },
+        {
+          "position": "1.3",
+          "type_": "track",
+          "title": "Para Viver Um Grande Amor",
+          "duration": ""
+        },
+        {
+          "position": "1.4",
+          "type_": "track",
+          "title": "Morena Flor",
+          "duration": ""
+        },
+        {
+          "position": "1.5",
+          "type_": "track",
+          "title": "Samba Da Volta",
+          "duration": ""
+        },
+        {
+          "position": "1.6",
+          "type_": "track",
+          "title": "Regra Três",
+          "duration": ""
+        }
+      ]
+    },
+    {
+      "position": "2",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Elis Regina",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 30703,
+          "resource_url": "https://api.discogs.com/artists/30703"
+        }
+      ],
+      "title": "Canto De Ossanha",
+      "duration": "2:38"
+    },
+    {
+      "position": "3",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Vinicius De Moraes",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 315789,
+          "resource_url": "https://api.discogs.com/artists/315789"
+        }
+      ],
+      "title": "Pela Luz Dos Olhos Teus",
+      "duration": "1:38"
+    },
+    {
+      "position": "4",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Toquinho & Vinicius",
+          "anv": "Toquinho/Vinícius De Moraes",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 961600,
+          "resource_url": "https://api.discogs.com/artists/961600"
+        }
+      ],
+      "title": "Às Cores De Abril",
+      "duration": "4:00"
+    },
+    {
+      "position": "5",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Caetano Veloso",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 83763,
+          "resource_url": "https://api.discogs.com/artists/83763"
+        }
+      ],
+      "title": "Eu Sei Que Vou Te Amar",
+      "duration": "3:52"
+    },
+    {
+      "position": "",
+      "type_": "index",
+      "artists": [
+        {
+          "name": "Toquinho & Vinicius",
+          "anv": "Toquinho/Vinícius De Moraes",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 961600,
+          "resource_url": "https://api.discogs.com/artists/961600"
+        }
+      ],
+      "title": "Pot-Pourri No. 3",
+      "duration": "4:34",
+      "sub_tracks": [
+        {
+          "position": "6.1",
+          "type_": "track",
+          "title": "O Velho E A Flor",
+          "duration": ""
+        },
+        {
+          "position": "6.2",
+          "type_": "track",
+          "title": "Veja Você",
+          "duration": ""
+        },
+        {
+          "position": "6.3",
+          "type_": "track",
+          "title": "Mais Um Adeus",
+          "duration": ""
+        }
+      ]
+    },
+    {
+      "position": "7",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Vinicius De Moraes",
+          "anv": "",
+          "join": ",",
+          "role": "",
+          "tracks": "",
+          "id": 315789,
+          "resource_url": "https://api.discogs.com/artists/315789"
+        },
+        {
+          "name": "Quarteto Em Cy",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 156051,
+          "resource_url": "https://api.discogs.com/artists/156051"
+        }
+      ],
+      "title": "Minha Namorada",
+      "duration": "4:03"
+    },
+    {
+      "position": "8",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Toquinho & Vinicius",
+          "anv": "Vinícius De Moraes/Toquinho",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 961600,
+          "resource_url": "https://api.discogs.com/artists/961600"
+        }
+      ],
+      "title": "Onde Anda Você",
+      "duration": "2:47"
+    },
+    {
+      "position": "9",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Agostinho Dos Santos",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 447685,
+          "resource_url": "https://api.discogs.com/artists/447685"
+        }
+      ],
+      "title": "Se Todos Fossem Iguais A Você",
+      "duration": "3:34"
+    },
+    {
+      "position": "",
+      "type_": "index",
+      "artists": [
+        {
+          "name": "Toquinho & Vinicius",
+          "anv": "Toquinho/Vinícius De Moraes",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 961600,
+          "resource_url": "https://api.discogs.com/artists/961600"
+        }
+      ],
+      "title": "Pot-Pourri No. 5",
+      "duration": "3:42",
+      "sub_tracks": [
+        {
+          "position": "10.1",
+          "type_": "track",
+          "title": "São Demais Os Perigos Desta Vida",
+          "duration": ""
+        },
+        {
+          "position": "10.2",
+          "type_": "track",
+          "title": "Às Cores De Abril",
+          "duration": ""
+        },
+        {
+          "position": "10.3",
+          "type_": "track",
+          "title": "O Filho Que Eu Quero Ter",
+          "duration": ""
+        }
+      ]
+    },
+    {
+      "position": "11",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Toquinho & Vinicius",
+          "anv": "Vinícius De Moraes/Toquinho",
+          "join": ",",
+          "role": "",
+          "tracks": "",
+          "id": 961600,
+          "resource_url": "https://api.discogs.com/artists/961600"
+        },
+        {
+          "name": "Quarteto Em Cy",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 156051,
+          "resource_url": "https://api.discogs.com/artists/156051"
+        }
+      ],
+      "title": "Carta Ao Tom 74",
+      "duration": "2:38"
+    },
+    {
+      "position": "12",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Toquinho & Vinicius",
+          "anv": "Toquinho/Vinícius De Moraes",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 961600,
+          "resource_url": "https://api.discogs.com/artists/961600"
+        }
+      ],
+      "title": "A Tonga Da Mironga Do Kabuletê",
+      "duration": "1:02"
+    },
+    {
+      "position": "13",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Toquinho & Vinicius",
+          "anv": "Vinícius De Moraes/Toquinho",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 961600,
+          "resource_url": "https://api.discogs.com/artists/961600"
+        }
+      ],
+      "title": "Samba Da Bênção",
+      "duration": "6:55"
+    },
+    {
+      "position": "14",
+      "type_": "track",
+      "artists": [
+        {
+          "name": "Nara Leão",
+          "anv": "",
+          "join": "",
+          "role": "",
+          "tracks": "",
+          "id": 83772,
+          "resource_url": "https://api.discogs.com/artists/83772"
+        }
+      ],
+      "title": "Marcha Da Quarta-feira De Cinzas",
+      "duration": "2:58"
+    }
+  ],
+  "extraartists": [],
+  "images": [
+    {
+      "type": "secondary",
+      "uri": "",
+      "resource_url": "",
+      "uri150": "",
+      "width": 296,
+      "height": 300
+    }
+  ],
+  "thumb": "",
+  "estimated_weight": 85,
+  "blocked_from_sale": false
+}

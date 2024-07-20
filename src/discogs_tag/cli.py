@@ -19,7 +19,7 @@ SKIP_KEYS = [
   'title',
   'position',
   'date',
-  'subtrack',
+  'subtracks',
   'album',
   'genre',
   'albumartist'
@@ -31,6 +31,10 @@ COMPOSER_TAGS = [
 ]
 
 AUDIO_EXTENSIONS = ['flac', 'mp3']
+
+VARIOUS_ARTISTS = [
+  'Various Artists'
+]
 
 def tag(
   release,
@@ -47,7 +51,9 @@ def tag(
       - A local file URI pointing to a release JSON file
 
   The SKIP flag can take one or more of the following values, comma-separated:
-      artist, composer, title, position, date, subtrack, album, genre, albumartist
+      artist, composer, title, position, date, subtracks, album, genre, albumartist
+
+      If subtracks are skipped, subtrack titles get appended to their parent track.
 
   """
   options = parse_options(locals())
@@ -66,7 +72,9 @@ def copy(
   """Copy the audio tags from source to destination folders.
 
   The SKIP flag can take one or more of the following values, comma-separated:
-      artist, composer, title, position, date, subtrack, album, genre, albumartist
+      artist, composer, title, position, date, subtracks, album, genre, albumartist
+
+      If subtracks are skipped, subtrack titles get appended to their parent track.
 
   """
   options = parse_options(locals())
@@ -210,7 +218,9 @@ def apply_metadata(release, files, options):
     def reduce_track(tracks, track):
       if track['type_'] == 'track':
         tracks.append(track)
-      if not options['skip_subtrack'] and 'sub_tracks' in track:
+      elif options['skip_subtracks'] and 'sub_tracks' in track:
+        tracks.append(track)
+      if not options['skip_subtracks'] and 'sub_tracks' in track:
         tracks = tracks + get_tracks(track['sub_tracks'])
       return tracks
     return reduce(reduce_track, tracklist, [])
@@ -225,7 +235,7 @@ def apply_metadata(release, files, options):
   for n, track in enumerate(tracks):
     try:
       audio = mutagen.File(files[n], easy=True)
-      audio = merge_metadata(release, track, audio, options)
+      audio = apply_metadata_track(release, track, audio, n+1, options)
       if options['dry']:
         pprint(audio)
       else:
@@ -332,11 +342,13 @@ def parse_options(options):
   for skip in SKIP_KEYS:
     options['skip_' + skip.lower()] = False
   if 'skip' in options and options['skip'] is not None:
+    if isinstance(options['skip'], str):
+      options['skip'] = [options['skip']]
     for skip in options['skip']:
       options['skip_' + skip.lower()] = True
   return options
 
-def merge_metadata(release, track, audio, options):
+def apply_metadata_track(release, track, audio, n, options):
   def artist_name(artist):
     name = None
     if 'anv' in artist and artist['anv']:
@@ -346,7 +358,11 @@ def merge_metadata(release, track, audio, options):
     return re.sub(r"\s+\(\d+\)$", '', name) if name else None
 
   if not options['skip_title']:
-    audio['title'] = track['title']
+    title = track['title']
+    if options['skip_subtracks'] and 'sub_tracks' in track:
+      title += ': ' + ' / '.join([subtrack['title'] for subtrack in track['sub_tracks'] if subtrack['type_'] == 'track'])
+    if title:
+      audio['title'] = title
 
   if not options['skip_artist']:
     artists = []
@@ -377,20 +393,19 @@ def merge_metadata(release, track, audio, options):
     if 'title' in release:
       audio['album'] = release['title']
 
-  if not options['skip_composer']:
-    composers = [artist_name(composer) for composer in filter(lambda a: a['role'].casefold() in [(lambda c: c.casefold())(c) for c in COMPOSER_TAGS], track['extraartists'])] if 'extraartists' in track else None
+  if not options['skip_composer'] and 'extraartists' in track:
+    composers = [artist_name(composer) for composer in track['extraartists'] if composer['role'].casefold() in [(lambda c: c.casefold())(c) for c in COMPOSER_TAGS]]
     if composers:
       audio['composer'] = ', '.join(composers)
 
   if not options['skip_position']:
     positions = track['position'].split('-')
-    audio['tracknumber'] = positions[-1]
+    audio['tracknumber'] = positions[-1] or str(n)
     if len(positions) > 1:
       audio['discnumber'] = positions[0]
 
-  if not options['skip_date']:
-    if 'year' in release and release['year']:
-      audio['date'] = str(release['year'])
+  if not options['skip_date'] and 'year' in release:
+    audio['date'] = str(release['year'])
 
   return audio
 

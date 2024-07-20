@@ -5,10 +5,6 @@ An audio tagger based on Discogs metadata.
 
 [![PyPI Version](https://img.shields.io/pypi/v/discogs-tag.svg)](https://pypi.org/project/discogs-tag/)
 
-# Development
-- Install [`poetry`](https://python-poetry.org/docs/#installation)
-- `poetry install && poetry build && pip install .`
-
 # Usage
 ```shell
 NAME
@@ -46,6 +42,8 @@ DESCRIPTION
     The SKIP flag can take one or more of the following values, comma-separated:
         artist, composer, title, position, date, subtrack, album, genre, albumartist
 
+        If subtracks are skipped, subtrack titles get appended to their parent track.
+
 POSITIONAL ARGUMENTS
     RELEASE
 
@@ -74,6 +72,8 @@ SYNOPSIS
 DESCRIPTION
     The SKIP flag can take one or more of the following values, comma-separated:
         artist, composer, title, position, date, subtrack, album, genre, albumartist
+
+        If subtracks are skipped, subtrack titles get appended to their parent track.
 
 POSITIONAL ARGUMENTS
     SRC
@@ -128,3 +128,7 @@ FLAGS
 NOTES
     You can also use flags syntax for POSITIONAL ARGUMENTS
 ```
+# Development
+- Install [`poetry`](https://python-poetry.org/docs/#installation)
+- `poetry install && poetry build && pip install .`
+
