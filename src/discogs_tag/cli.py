@@ -32,10 +32,6 @@ COMPOSER_TAGS = [
 
 AUDIO_EXTENSIONS = ['flac', 'mp3']
 
-VARIOUS_ARTISTS = [
-  'Various Artists'
-]
-
 def tag(
   release,
   dir='./',
@@ -394,7 +390,7 @@ def apply_metadata_track(release, track, audio, n, options):
       audio['album'] = release['title']
 
   if not options['skip_composer'] and 'extraartists' in track:
-    composers = [artist_name(composer) for composer in track['extraartists'] if composer['role'].casefold() in [(lambda c: c.casefold())(c) for c in COMPOSER_TAGS]]
+    composers = [artist_name(composer) for composer in track['extraartists'] if composer['role'].casefold() in [c.casefold() for c in COMPOSER_TAGS]]
     if composers:
       audio['composer'] = ', '.join(composers)
 
