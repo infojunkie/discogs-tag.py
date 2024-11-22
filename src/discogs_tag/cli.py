@@ -344,9 +344,9 @@ def list_files(dir):
   ]))
 
 def parse_options(options):
+  for skip in SKIP_KEYS:
+    options['skip_' + skip.lower()] = False
   if 'skip' in options and options['skip'] is not None:
-    for skip in SKIP_KEYS:
-      options['skip_' + skip.lower()] = False
     if isinstance(options['skip'], str):
       options['skip'] = [options['skip']]
     for skip in options['skip']:

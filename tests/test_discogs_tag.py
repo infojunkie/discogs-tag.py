@@ -164,6 +164,81 @@ def test_apply_metadata_track():
   assert audio['title'] == 'Title: Sub track 1 / Sub track 2'
   assert audio['tracknumber'] == '2'
 
+def test_skip_only_options():
+  audio = apply_metadata_track({
+    'year': 2002,
+    'artists': [{
+      'anv': 'Artist 1'
+    }, {
+      'name': 'Artist 2'
+    }, {
+      'anv': '',
+      'name': 'Artist 3 (56)'
+    }],
+  }, {
+    'title': 'Title',
+    'position': '',
+    'sub_tracks': [{
+      'type_': 'track',
+      "title": "Sub track 1",
+    }, {
+      'type_': 'track',
+      'title': 'Sub track 2',
+    }, {
+      'type_': 'data',
+      'title': "Not a track",
+    }],
+    'extraartists': [{
+      'role': 'Guitar',
+      'name': 'Guitarist'
+    }, {
+      'role': 'Written-By',
+      'name': 'Composer 1'
+    }, {
+      'role': 'Composed By',
+      'name': 'Composer 2'
+    }]
+  }, { 'title': 'Some other title' }, 2, parse_options({ 'skip': ['title'] }))
+  assert audio['title'] == 'Some other title'
+  assert audio['tracknumber'] == '2'
+
+  audio = apply_metadata_track({
+    'year': 2002,
+    'artists': [{
+      'anv': 'Artist 1'
+    }, {
+      'name': 'Artist 2'
+    }, {
+      'anv': '',
+      'name': 'Artist 3 (56)'
+    }],
+  }, {
+    'title': 'Title',
+    'position': '',
+    'sub_tracks': [{
+      'type_': 'track',
+      "title": "Sub track 1",
+    }, {
+      'type_': 'track',
+      'title': 'Sub track 2',
+    }, {
+      'type_': 'data',
+      'title': "Not a track",
+    }],
+    'extraartists': [{
+      'role': 'Guitar',
+      'name': 'Guitarist'
+    }, {
+      'role': 'Written-By',
+      'name': 'Composer 1'
+    }, {
+      'role': 'Composed By',
+      'name': 'Composer 2'
+    }]
+  }, { 'title': 'Some other title' }, 2, parse_options({ 'only': ['title'] }))
+  assert audio['title'] == 'Title: Sub track 1 / Sub track 2'
+  assert 'tracknumber' not in audio
+
 def test_apply_metadata():
   with open('tests/18051880.json') as release:
     data = json.load(release)
