@@ -16,6 +16,9 @@ SYNOPSIS
 COMMANDS
     COMMAND is one of the following:
 
+     version
+       Return version information.
+
      tag
        Tag the audio files with the given Discogs release.
 
@@ -39,8 +42,8 @@ DESCRIPTION
         - The numeric portion of the above, e.g. 16215626
         - A local file URI pointing to a release JSON file
 
-    The SKIP flag can take one or more of the following values, comma-separated:
-        artist, composer, title, position, date, subtrack, album, genre, albumartist
+    The SKIP and ONLY flags can take one or more of the following values, comma-separated:
+        artist, composer, title, position, date, subtracks, album, genre, albumartist
 
         If subtracks are skipped, subtrack titles get appended to their parent track.
 
@@ -57,6 +60,9 @@ FLAGS
     -s, --skip=SKIP
         Type: Optional[]
         Default: None
+    -o, --only=ONLY
+        Type: Optional[]
+        Default: None
 
 NOTES
     You can also use flags syntax for POSITIONAL ARGUMENTS
@@ -70,8 +76,8 @@ SYNOPSIS
     discogs-tag copy SRC <flags>
 
 DESCRIPTION
-    The SKIP flag can take one or more of the following values, comma-separated:
-        artist, composer, title, position, date, subtrack, album, genre, albumartist
+    The SKIP and ONLY flags can take one or more of the following values, comma-separated:
+        artist, composer, title, position, date, subtracks, album, genre, albumartist
 
         If subtracks are skipped, subtrack titles get appended to their parent track.
 
@@ -86,6 +92,9 @@ FLAGS
     -i, --ignore=IGNORE
         Default: False
     -s, --skip=SKIP
+        Type: Optional[]
+        Default: None
+    -o, --only=ONLY
         Type: Optional[]
         Default: None
 

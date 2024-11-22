@@ -32,12 +32,20 @@ COMPOSER_TAGS = [
 
 AUDIO_EXTENSIONS = ['flac', 'mp3']
 
+def version():
+  """ Return version information. """
+  print(json.dumps({
+    'name': __NAME__,
+    'version': __VERSION__
+  }, indent=4))
+
 def tag(
   release,
   dir='./',
   dry=False,
   ignore=False,
-  skip=None
+  skip=None,
+  only=None
 ):
   """Tag the audio files with the given Discogs release.
 
@@ -46,7 +54,7 @@ def tag(
       - The numeric portion of the above, e.g. 16215626
       - A local file URI pointing to a release JSON file
 
-  The SKIP flag can take one or more of the following values, comma-separated:
+  The SKIP and ONLY flags can take one or more of the following values, comma-separated:
       artist, composer, title, position, date, subtracks, album, genre, albumartist
 
       If subtracks are skipped, subtrack titles get appended to their parent track.
@@ -63,11 +71,12 @@ def copy(
   dir='./',
   dry=False,
   ignore=False,
-  skip=None
+  skip=None,
+  only=None
 ):
   """Copy the audio tags from source to destination folders.
 
-  The SKIP flag can take one or more of the following values, comma-separated:
+  The SKIP and ONLY flags can take one or more of the following values, comma-separated:
       artist, composer, title, position, date, subtracks, album, genre, albumartist
 
       If subtracks are skipped, subtrack titles get appended to their parent track.
@@ -335,13 +344,20 @@ def list_files(dir):
   ]))
 
 def parse_options(options):
-  for skip in SKIP_KEYS:
-    options['skip_' + skip.lower()] = False
   if 'skip' in options and options['skip'] is not None:
+    for skip in SKIP_KEYS:
+      options['skip_' + skip.lower()] = False
     if isinstance(options['skip'], str):
       options['skip'] = [options['skip']]
     for skip in options['skip']:
       options['skip_' + skip.lower()] = True
+  if 'only' in options and options['only'] is not None:
+    for skip in SKIP_KEYS:
+      options['skip_' + skip.lower()] = True
+    if isinstance(options['only'], str):
+      options['only'] = [options['only']]
+    for skip in options['only']:
+      options['skip_' + skip.lower()] = False
   return options
 
 def apply_metadata_track(release, track, audio, n, options):
@@ -407,6 +423,7 @@ def apply_metadata_track(release, track, audio, n, options):
 
 def cli():
   fire.Fire({
+    'version': version,
     'tag': tag,
     'copy': copy,
     'rename': rename
