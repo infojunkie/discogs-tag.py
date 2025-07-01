@@ -30,6 +30,8 @@ COMPOSER_TAGS = [
   'Composed By'
 ]
 
+VARIOUS_ARTISTS = 'Various Artists'
+
 AUDIO_EXTENSIONS = ['flac', 'mp3']
 
 def version():
@@ -367,7 +369,10 @@ def apply_metadata_track(release, track, audio, n, options):
       name = artist['anv']
     elif 'name' in artist and artist['name']:
       name = artist['name']
-    return re.sub(r"\s+\(\d+\)$", '', name) if name else None
+    if name:
+      name = re.sub(r"^Various$", VARIOUS_ARTISTS, name, flags=re.IGNORECASE)
+      name = re.sub(r"\s+\(\d+\)$", '', name)
+    return name
 
   if not options['skip_title']:
     title = track['title']

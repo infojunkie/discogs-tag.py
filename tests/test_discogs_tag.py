@@ -101,7 +101,7 @@ def test_apply_metadata_track():
     'artists': [{
       'anv': 'Artist 1'
     }, {
-      'name': 'Artist 2'
+      'name': 'Various'
     }, {
       'anv': '',
       'name': 'Artist 3 (56)'
@@ -121,7 +121,7 @@ def test_apply_metadata_track():
     }]
   }, { 'title': 'Some other title' }, 9999, parse_options({ 'skip': None }))
   assert audio['title'] == 'Title'
-  assert audio['artist'] == 'Artist 1, Artist 2, Artist 3'
+  assert audio['artist'] == 'Artist 1, Various Artists, Artist 3'
   assert audio['discnumber'] == '1'
   assert audio['tracknumber'] == '02'
   assert audio['composer'] == 'Composer 1, Composer 2'
