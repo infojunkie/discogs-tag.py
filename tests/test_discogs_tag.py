@@ -7,7 +7,7 @@ from discogs_tag.cli import (
   rename_component,
   rename_path,
   rename_file,
-  get_release
+  get_release,
 )
 import pytest
 import json
@@ -127,43 +127,6 @@ def test_apply_metadata_track():
   assert audio['composer'] == 'Composer 1, Composer 2'
   assert audio['date'] == '2002'
 
-  audio = apply_metadata_track({
-    'year': 2002,
-    'artists': [{
-      'anv': 'Artist 1'
-    }, {
-      'name': 'Artist 2'
-    }, {
-      'anv': '',
-      'name': 'Artist 3 (56)'
-    }],
-  }, {
-    'title': 'Title',
-    'position': '',
-    'sub_tracks': [{
-      'type_': 'track',
-      "title": "Sub track 1",
-    }, {
-      'type_': 'track',
-      'title': 'Sub track 2',
-    }, {
-      'type_': 'data',
-      'title': "Not a track",
-    }],
-    'extraartists': [{
-      'role': 'Guitar',
-      'name': 'Guitarist'
-    }, {
-      'role': 'Written-By',
-      'name': 'Composer 1'
-    }, {
-      'role': 'Composed By',
-      'name': 'Composer 2'
-    }]
-  }, { 'title': 'Some other title' }, 2, parse_options({ 'skip': ['subtracks'] }))
-  assert audio['title'] == 'Title: Sub track 1 / Sub track 2'
-  assert audio['tracknumber'] == '2'
-
 def test_skip_only_options():
   audio = apply_metadata_track({
     'year': 2002,
@@ -239,13 +202,62 @@ def test_skip_only_options():
   assert audio['title'] == 'Title: Sub track 1 / Sub track 2'
   assert 'tracknumber' not in audio
 
+def test_sub_tracks(mocker, capsys):
+  audio = apply_metadata_track({
+    'year': 2002,
+    'artists': [{
+      'anv': 'Artist 1'
+    }, {
+      'name': 'Artist 2'
+    }, {
+      'anv': '',
+      'name': 'Artist 3 (56)'
+    }],
+  }, {
+    'title': 'Title',
+    'position': '',
+    'sub_tracks': [{
+      'type_': 'track',
+      "title": "Sub track 1",
+    }, {
+      'type_': 'track',
+      'title': 'Sub track 2',
+    }, {
+      'type_': 'data',
+      'title': "Not a track",
+    }],
+    'extraartists': [{
+      'role': 'Guitar',
+      'name': 'Guitarist'
+    }, {
+      'role': 'Written-By',
+      'name': 'Composer 1'
+    }, {
+      'role': 'Composed By',
+      'name': 'Composer 2'
+    }]
+  }, { 'title': 'Some other title' }, 2, parse_options({ 'skip': ['subtracks'] }))
+  assert audio['title'] == 'Title: Sub track 1 / Sub track 2'
+  assert audio['tracknumber'] == '2'
+
+  mutagen_file_mock = mocker.patch('mutagen.File')
+  mutagen_file_mock.return_value = {}
+  with open('tests/17717578.json') as release:
+    data = json.load(release)
+    apply_metadata(data, range(12), parse_options({ 'dry': True, 'dots_as_subtracks': True, 'skip': ['subtracks'] }))
+    captured = capsys.readouterr()
+    assert "'title': 'De Repente, Califórnia / Adivinha O Quê? / Um Certo Alguém / O Último Romântico / Como Uma Onda (Zen Surfismo)', 'tracknumber': '9'" in captured.out
+    apply_metadata(data, range(16), parse_options({ 'dry': True, 'dots_as_subtracks': True, 'skip': None }))
+    captured = capsys.readouterr()
+    assert "'title': 'Adivinha O Quê?', 'tracknumber': '10'" in captured.out
+
 def test_apply_metadata():
   with open('tests/18051880.json') as release:
     data = json.load(release)
 
     # Test that files must match API results.
     with pytest.raises(Exception) as error:
-      apply_metadata(data, [], parse_options({ 'dry': False, 'ignore': False, 'skip': None }))
+      apply_metadata(data, [], parse_options({ 'dry': False, 'skip': None }))
     assert "Expecting 28 files" in str(error.value)
 
 def test_count_subtracks():
@@ -254,7 +266,7 @@ def test_count_subtracks():
 
     # Test that files must match API results with subtracks.
     with pytest.raises(Exception) as error:
-      apply_metadata(data, [], parse_options({ 'dry': False, 'ignore': False, 'skip': None }))
+      apply_metadata(data, [], parse_options({ 'dry': False, 'skip': None }))
     assert "Expecting 18 files" in str(error.value)
 
   with open('tests/8582788.json') as release:
@@ -262,7 +274,7 @@ def test_count_subtracks():
 
     # Test that files must match API results without subtracks.
     with pytest.raises(Exception) as error:
-      apply_metadata(data, [], parse_options({ 'dry': False, 'ignore': False, 'skip': 'subtracks' }))
+      apply_metadata(data, [], parse_options({ 'dry': False, 'skip': 'subtracks' }))
     assert "Expecting 14 files" in str(error.value)
 
 def test_rename_component():
@@ -276,7 +288,7 @@ def test_rename_component():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == '1-02 Title'
+  }, '%d-%n %t', parse_options({ 'dry': True })) == '1-02 Title'
 
   assert rename_component({
     'artist': ['Artist'],
@@ -287,7 +299,7 @@ def test_rename_component():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == '02 Title'
+  }, '%d-%n %t', parse_options({ 'dry': True })) == '02 Title'
 
   with pytest.raises(IndexError) as error:
     rename_component({
@@ -300,7 +312,7 @@ def test_rename_component():
       'tracknumber': [2],
       'title': ['Title'],
       'date': ['2024']
-    }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False }))
+    }, '%d-%n %t', parse_options({ 'dry': False }))
   assert "list index out of range" in str(error.value)
 
 def test_rename_path():
@@ -314,7 +326,7 @@ def test_rename_path():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/Album Artist - (2024) Album', '/src/path/Album Artist - (2024) Album')
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True })) == ('/src/path/Album Artist - (2024) Album', '/src/path/Album Artist - (2024) Album')
 
   assert rename_path('/src/path/from', {
     'artist': ['Artist'],
@@ -326,7 +338,7 @@ def test_rename_path():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/Album Artist - (2024) Album1 - Album2', '/src/path/Album Artist - (2024) Album1 - Album2')
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True })) == ('/src/path/Album Artist - (2024) Album1 - Album2', '/src/path/Album Artist - (2024) Album1 - Album2')
 
   assert rename_path('/src/path/from', {
     'artist': ['Artist'],
@@ -337,7 +349,7 @@ def test_rename_path():
     'genre': ['Genre'],
     'tracknumber': [2],
     'title': ['Title']
-  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/Album Artist - Album1 - Album2', '/src/path/Album Artist - Album1 - Album2')
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True })) == ('/src/path/Album Artist - Album1 - Album2', '/src/path/Album Artist - Album1 - Album2')
 
   assert rename_path('/src/path/from', {
     'artist': ['Artist'],
@@ -349,7 +361,7 @@ def test_rename_path():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/from', '/src/path/from')
+  }, '%d-%n %t', parse_options({ 'dry': True })) == ('/src/path/from', '/src/path/from')
 
   assert rename_path('/src/path/from', {
     'artist': ['Artist'],
@@ -361,7 +373,7 @@ def test_rename_path():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z/(%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == ('/src/path/Album Artist/(2024) Album', '/src/path/Album Artist')
+  }, '%z/(%y) %b/%d-%n %t', parse_options({ 'dry': True })) == ('/src/path/Album Artist/(2024) Album', '/src/path/Album Artist')
 
 def test_rename_file():
   assert rename_file('/src/path/from/test.flac', '/dest/path/to', {
@@ -374,7 +386,7 @@ def test_rename_file():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True, 'ignore': False })) == '/dest/path/to/1-02 Title.flac'
+  }, '%z - (%y) %b/%d-%n %t', parse_options({ 'dry': True })) == '/dest/path/to/1-02 Title.flac'
 
   assert rename_file('/src/path/from/test.flac', '/dest/path/to', {
     'artist': ['Artist1 / Artist2'],
@@ -386,7 +398,7 @@ def test_rename_file():
     'tracknumber': [2],
     'title': ['Title1 / Title2'],
     'date': ['2024']
-  }, '%z - (%y) %b/%d-%n %a - %t', parse_options({ 'dry': True, 'ignore': False })) == '/dest/path/to/1-02 Artist1 - Artist2 - Title1 - Title2.flac'
+  }, '%z - (%y) %b/%d-%n %a - %t', parse_options({ 'dry': True })) == '/dest/path/to/1-02 Artist1 - Artist2 - Title1 - Title2.flac'
 
   assert rename_file('/src/path/from/test.flac', '/dest/path/to', {
     'artist': ['Artist'],
@@ -398,7 +410,7 @@ def test_rename_file():
     'tracknumber': [2],
     'title': ['Title'],
     'date': ['2024']
-  }, '%z - (%y) %b/', parse_options({ 'dry': True, 'ignore': False })) == '/dest/path/to/test.flac'
+  }, '%z - (%y) %b/', parse_options({ 'dry': True })) == '/dest/path/to/test.flac'
 
 def test_get_release():
   assert json.load(get_release('file:tests/16215626.json'))['id'] == 16215626

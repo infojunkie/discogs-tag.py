@@ -47,6 +47,8 @@ DESCRIPTION
 
         If subtracks are skipped, subtrack titles get appended to their parent track.
 
+    The flag DOTS_AS_SUBTRACKS considers track numbers such as "9.1", "9.2", etc to be subtracks.
+
 POSITIONAL ARGUMENTS
     RELEASE
 
@@ -55,17 +57,14 @@ FLAGS
         Default: './'
     --dry=DRY
         Default: False
-    -i, --ignore=IGNORE
-        Default: False
     -s, --skip=SKIP
         Type: Optional[]
         Default: None
     -o, --only=ONLY
         Type: Optional[]
         Default: None
-
-NOTES
-    You can also use flags syntax for POSITIONAL ARGUMENTS
+    --dots_as_subtracks=DOTS_AS_SUBTRACKS
+        Default: True
 ```
 ## copy
 ```shell
@@ -89,17 +88,12 @@ FLAGS
         Default: './'
     --dry=DRY
         Default: False
-    -i, --ignore=IGNORE
-        Default: False
     -s, --skip=SKIP
         Type: Optional[]
         Default: None
     -o, --only=ONLY
         Type: Optional[]
         Default: None
-
-NOTES
-    You can also use flags syntax for POSITIONAL ARGUMENTS
 ```
 ## rename
 ```shell
@@ -115,7 +109,7 @@ DESCRIPTION
         %z Album artist
         %b Album title
         %p Composer
-        %d Disc nummber
+        %d Disc number
         %g Genre
         %n Track number
         %t Track title
@@ -131,13 +125,7 @@ FLAGS
         Default: './'
     --dry=DRY
         Default: False
-    -i, --ignore=IGNORE
-        Default: False
-
-NOTES
-    You can also use flags syntax for POSITIONAL ARGUMENTS
 ```
 # Development
 - Install [`poetry`](https://python-poetry.org/docs/#installation)
 - `poetry install && poetry build && pip install .`
-

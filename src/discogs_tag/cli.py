@@ -34,6 +34,10 @@ VARIOUS_ARTISTS = 'Various Artists'
 
 AUDIO_EXTENSIONS = ['flac', 'mp3']
 
+TITLE_SEPARATOR = ' / '
+
+NON_TITLE_SEPARATOR = ', '
+
 def version():
   """ Return version information. """
   print(json.dumps({
@@ -45,9 +49,9 @@ def tag(
   release,
   dir='./',
   dry=False,
-  ignore=False,
   skip=None,
-  only=None
+  only=None,
+  dots_as_subtracks=True
 ):
   """Tag the audio files with the given Discogs release.
 
@@ -61,10 +65,14 @@ def tag(
 
       If subtracks are skipped, subtrack titles get appended to their parent track.
 
+  The flag DOTS_AS_SUBTRACKS considers track numbers such as "9.1", "9.2", etc to be subtracks.
+
   """
   options = parse_options(locals())
   response = get_release(release)
   data = json.load(response)
+  if options['dry']:
+    pprint(data, width=1000)
   files = list_files(dir)
   apply_metadata(data, files, options)
 
@@ -72,7 +80,6 @@ def copy(
   src,
   dir='./',
   dry=False,
-  ignore=False,
   skip=None,
   only=None
 ):
@@ -93,7 +100,7 @@ def copy(
   data = read_metadata(audios, options)
   dst_files = list_files(dir)
   if options['dry']:
-    pprint(data)
+    pprint(data, width=1000)
   else:
     apply_metadata(data, dst_files, options)
 
@@ -101,7 +108,6 @@ def rename(
   format,
   dir='./',
   dry=False,
-  ignore=False
 ):
   """Rename the audio files based on the given format string.
 
@@ -110,7 +116,7 @@ def rename(
       %z Album artist
       %b Album title
       %p Composer
-      %d Disc nummber
+      %d Disc number
       %g Genre
       %n Track number
       %t Track title
@@ -222,19 +228,38 @@ def read_metadata(audios, options):
 def apply_metadata(release, files, options):
   """Apply Discogs release metadada to audio files."""
   def get_tracks(tracklist):
-    def reduce_track(tracks, track):
+    def reduce_track(tracks, track_with_index):
+      index, track = track_with_index
       if track['type_'] == 'track':
-        tracks.append(track)
+        if '.' in track['position'] and options['dots_as_subtracks']:
+          num = int(track['position'].split('.')[0])
+          sub = int(track['position'].split('.')[1])
+          if sub == 1:
+            # Create a dummy track and add all subtracks to it.
+            # Reset the track number of the subtracks to renumber them in the output.
+            trk = track.copy()
+            trk['type_'] = 'track'
+            trk['position'] = str(num)
+            trk['title'] = ''
+            trk['sub_tracks'] = [t.copy() for t in tracklist[index:] if t['position'].split('.')[0] == str(num)]
+            for t in trk['sub_tracks']:
+              t['position'] = ''
+            if options['skip_subtracks']:
+              tracks.append(trk)
+            else:
+              tracks = tracks + get_tracks(trk['sub_tracks'])
+        else:
+          tracks.append(track)
       elif options['skip_subtracks'] and 'sub_tracks' in track:
         tracks.append(track)
       if not options['skip_subtracks'] and 'sub_tracks' in track:
         tracks = tracks + get_tracks(track['sub_tracks'])
       return tracks
-    return reduce(reduce_track, tracklist, [])
+    return reduce(reduce_track, enumerate(tracklist), [])
 
   tracks = get_tracks(release['tracklist'])
   if len(files) != len(tracks):
-    if options['ignore']:
+    if options['dry']:
       print(f'Expecting {len(tracks)} files but found {len(files)}. Ignoring.', file=sys.stderr)
     else:
       raise Exception(f'Expecting {len(tracks)} files but found {len(files)}. Aborting.')
@@ -244,11 +269,11 @@ def apply_metadata(release, files, options):
       audio = mutagen.File(files[n], easy=True)
       audio = apply_metadata_track(release, track, audio, n+1, options)
       if options['dry']:
-        pprint(audio)
+        pprint(audio, width=1000)
       else:
         audio.save()
     except Exception as e:
-      if options['ignore']:
+      if options['dry']:
         print(e, file=sys.stderr)
       else:
         raise e
@@ -279,7 +304,7 @@ def rename_component(audio, format, options):
         if not replace:
           format = re.sub(r"\p{Ps}?" + re.escape(tag) + r"[^%]*", '', format)
       except Exception as e:
-        if options['ignore']:
+        if options['dry']:
           print(e, file=sys.stderr)
         else:
           raise e
@@ -364,7 +389,7 @@ def parse_options(options):
 
 def apply_metadata_track(release, track, audio, n, options):
   def artist_name(artist):
-    name = None
+    name = ''
     if 'anv' in artist and artist['anv']:
       name = artist['anv']
     elif 'name' in artist and artist['name']:
@@ -376,8 +401,9 @@ def apply_metadata_track(release, track, audio, n, options):
 
   if not options['skip_title']:
     title = track['title']
+    # TODO! Merge other subtrack metadata.
     if options['skip_subtracks'] and 'sub_tracks' in track:
-      title += ': ' + ' / '.join([subtrack['title'] for subtrack in track['sub_tracks'] if subtrack['type_'] == 'track'])
+      title += (': ' if title else '') + TITLE_SEPARATOR.join([subtrack['title'] for subtrack in track['sub_tracks'] if subtrack['type_'] == 'track'])
     if title:
       audio['title'] = title
 
@@ -388,14 +414,14 @@ def apply_metadata_track(release, track, audio, n, options):
     if not artists:
       artists += [artist_name(artist) for artist in release['artists']]
     if artists:
-      audio['artist'] = ', '.join(artists)
+      audio['artist'] = NON_TITLE_SEPARATOR.join(artists)
 
   if not options['skip_albumartist']:
     artists = []
     if 'artists' in release:
       artists += [artist_name(artist) for artist in release['artists']]
     if artists:
-      audio['albumartist'] = ', '.join(artists)
+      audio['albumartist'] = NON_TITLE_SEPARATOR.join(artists)
 
   if not options['skip_genre']:
     genres = []
@@ -404,7 +430,7 @@ def apply_metadata_track(release, track, audio, n, options):
     if 'styles' in release:
       genres += [genre for genre in release['styles']]
     if genres:
-      audio['genre'] = ', '.join(genres)
+      audio['genre'] = NON_TITLE_SEPARATOR.join(genres)
 
   if not options['skip_album']:
     if 'title' in release:
@@ -413,7 +439,7 @@ def apply_metadata_track(release, track, audio, n, options):
   if not options['skip_composer'] and 'extraartists' in track:
     composers = [artist_name(composer) for composer in track['extraartists'] if composer['role'].casefold() in [c.casefold() for c in COMPOSER_TAGS]]
     if composers:
-      audio['composer'] = ', '.join(composers)
+      audio['composer'] = NON_TITLE_SEPARATOR.join(composers)
 
   if not options['skip_position']:
     positions = track['position'].split('-')
