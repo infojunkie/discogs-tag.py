@@ -1,0 +1,516 @@
+{
+  "id": 32990205,
+  "status": "Accepted",
+  "year": 1991,
+  "resource_url": "https://api.discogs.com/releases/32990205",
+  "uri": "https://www.discogs.com/release/32990205-Elba-Ramalho-Felicidade-Urgente",
+  "artists": [
+    {
+      "name": "Elba Ramalho",
+      "anv": "",
+      "join": "",
+      "role": "",
+      "tracks": "",
+      "id": 471961,
+      "resource_url": "https://api.discogs.com/artists/471961",
+      "thumbnail_url": "https://i.discogs.com/Z9ZWfmAcN6mN8Q0emYSjA3BEQflRkDPwborJupnU-H0/rs:fit/g:sm/q:90/h:400/w:354/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ3MTk2/MS0xMzkxMDM3Nzk2/LTc4MjQuanBlZw.jpeg"
+    }
+  ],
+  "artists_sort": "Elba Ramalho",
+  "labels": [
+    {
+      "name": "Philips",
+      "catno": "846 688-2",
+      "entity_type": "1",
+      "entity_type_name": "Label",
+      "id": 7704,
+      "resource_url": "https://api.discogs.com/labels/7704",
+      "thumbnail_url": "https://i.discogs.com/BY7mNngwEuD3bNOAGPUYtjO9qCpDys2iwpP8hwhnWLk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTc3MDQt/MTU5Njc0Mjg3Mi0y/MzQ1LmpwZWc.jpeg"
+    }
+  ],
+  "series": [
+    {
+      "name": "Colecionador",
+      "catno": "",
+      "entity_type": "2",
+      "entity_type_name": "Series",
+      "id": 1061604,
+      "resource_url": "https://api.discogs.com/labels/1061604",
+      "thumbnail_url": "https://i.discogs.com/D8e9QwYYfhp2ogbC68vdj6QJnJjbJMB2k7rQjDwtFgI/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTEwNjE2/MDQtMTYyNDk3OTYw/OS03MjU0LmpwZWc.jpeg"
+    }
+  ],
+  "companies": [
+    {
+      "name": "Microservice - Microfilmagens E Reproduções Técnicas Ltda.",
+      "catno": "",
+      "entity_type": "10",
+      "entity_type_name": "Manufactured By",
+      "id": 300888,
+      "resource_url": "https://api.discogs.com/labels/300888",
+      "thumbnail_url": "https://i.discogs.com/0mmF9yKOMWSH5x9wRVFS-GKj_hJv-PZ06cES711S3OI/rs:fit/g:sm/q:90/h:261/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTMwMDg4/OC0xNjUwNzQ3MTgz/LTYyOTkuanBlZw.jpeg"
+    },
+    {
+      "name": "Fonobrás, Distribuidora Fonográfica Brasileira Ltda.",
+      "catno": "",
+      "entity_type": "9",
+      "entity_type_name": "Distributed By",
+      "id": 301437,
+      "resource_url": "https://api.discogs.com/labels/301437",
+      "thumbnail_url": "https://i.discogs.com/LSACVyxIBHgJgqGh2T4K0SubDZt5ulUU-YjLkFwYYfo/rs:fit/g:sm/q:90/h:65/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTMwMTQz/Ny0xNTI2MzIyNTY3/LTIwNjcuanBlZw.jpeg"
+    },
+    {
+      "name": "Polygram Do Brasil Ltda.",
+      "catno": "",
+      "entity_type": "6",
+      "entity_type_name": "Licensed From",
+      "id": 290833,
+      "resource_url": "https://api.discogs.com/labels/290833",
+      "thumbnail_url": "https://i.discogs.com/KT1KB-fsND5EB-VttWCxAAfW_zXRJIqagpZnF2KfHEw/rs:fit/g:sm/q:90/h:173/w:279/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTI5MDgz/My0xNjYxODc4MzEy/LTE2NDQuanBlZw.jpeg"
+    }
+  ],
+  "formats": [
+    {
+      "name": "CD",
+      "qty": "1",
+      "descriptions": [
+        "Album"
+      ]
+    }
+  ],
+  "data_quality": "Needs Vote",
+  "community": {
+    "have": 2,
+    "want": 0,
+    "rating": {
+      "count": 0,
+      "average": 0
+    },
+    "submitter": {
+      "username": "AAdelson",
+      "resource_url": "https://api.discogs.com/users/AAdelson"
+    },
+    "contributors": [
+      {
+        "username": "AAdelson",
+        "resource_url": "https://api.discogs.com/users/AAdelson"
+      }
+    ],
+    "data_quality": "Needs Vote",
+    "status": "Accepted"
+  },
+  "format_quantity": 1,
+  "date_added": "2025-01-29T11:08:33-08:00",
+  "date_changed": "2025-01-29T14:46:35-08:00",
+  "num_for_sale": 2,
+  "lowest_price": 3.5,
+  "master_id": 762337,
+  "master_url": "https://api.discogs.com/masters/762337",
+  "title": "Felicidade Urgente",
+  "country": "Brazil",
+  "released": "1991",
+  "released_formatted": "1991",
+  "identifiers": [
+    {
+      "type": "Barcode",
+      "value": "0 42284 86882 2"
+    },
+    {
+      "type": "Matrix / Runout",
+      "value": "MICROSERVICE 8486882/02 W.O.# C31013-1"
+    },
+    {
+      "type": "SPARS Code",
+      "value": "AAD"
+    }
+  ],
+  "videos": [],
+  "genres": [
+    "Latin"
+  ],
+  "styles": [
+    "Forró",
+    "MPB"
+  ],
+  "tracklist": [
+    {
+      "position": "1",
+      "type_": "track",
+      "title": "Vida",
+      "extraartists": [
+        {
+          "name": "Lulu Santos",
+          "anv": "",
+          "join": "",
+          "role": "Featuring",
+          "tracks": "",
+          "id": 198450,
+          "resource_url": "https://api.discogs.com/artists/198450"
+        },
+        {
+          "name": "Maria Juçá",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 4745607,
+          "resource_url": "https://api.discogs.com/artists/4745607"
+        },
+        {
+          "name": "Roger Kedyh",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 3657159,
+          "resource_url": "https://api.discogs.com/artists/3657159"
+        }
+      ],
+      "duration": "3:11"
+    },
+    {
+      "position": "2",
+      "type_": "track",
+      "title": "Felicidade Urgente",
+      "extraartists": [
+        {
+          "name": "Claudio Zoli",
+          "anv": "",
+          "join": "",
+          "role": "Featuring",
+          "tracks": "",
+          "id": 60645,
+          "resource_url": "https://api.discogs.com/artists/60645"
+        },
+        {
+          "name": "Claudio Zoli",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 60645,
+          "resource_url": "https://api.discogs.com/artists/60645"
+        },
+        {
+          "name": "Ronaldo Lobato Santos",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 1611329,
+          "resource_url": "https://api.discogs.com/artists/1611329"
+        }
+      ],
+      "duration": "3:59"
+    },
+    {
+      "position": "3",
+      "type_": "track",
+      "title": "Morena De Angola",
+      "extraartists": [
+        {
+          "name": "Chico Buarque",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 312060,
+          "resource_url": "https://api.discogs.com/artists/312060"
+        }
+      ],
+      "duration": "3:35"
+    },
+    {
+      "position": "4",
+      "type_": "track",
+      "title": "Ventos Do Norte",
+      "extraartists": [
+        {
+          "name": "Djavan",
+          "anv": "",
+          "join": "",
+          "role": "Written-By, Featuring",
+          "tracks": "",
+          "id": 23475,
+          "resource_url": "https://api.discogs.com/artists/23475"
+        }
+      ],
+      "duration": "3:51"
+    },
+    {
+      "position": "5.1",
+      "type_": "track",
+      "title": "Pisa Na Fulô",
+      "extraartists": [
+        {
+          "name": "Ernesto Pires",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 3866438,
+          "resource_url": "https://api.discogs.com/artists/3866438"
+        },
+        {
+          "name": "João Do Vale",
+          "anv": "João Do Valle",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 1810038,
+          "resource_url": "https://api.discogs.com/artists/1810038"
+        },
+        {
+          "name": "Silveira Júnior",
+          "anv": "Silveira Jr.",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 6610671,
+          "resource_url": "https://api.discogs.com/artists/6610671"
+        }
+      ],
+      "duration": "2:53"
+    },
+    {
+      "position": "",
+      "type_": "index",
+      "title": "Músicas Incidentais",
+      "duration": "",
+      "sub_tracks": [
+        {
+          "position": "5.2",
+          "type_": "track",
+          "title": "Extra",
+          "duration": ""
+        },
+        {
+          "position": "5.3",
+          "type_": "track",
+          "title": "O Cheiro Da Carolina",
+          "duration": ""
+        }
+      ]
+    },
+    {
+      "position": "6",
+      "type_": "track",
+      "title": "Maré Dendê",
+      "extraartists": [
+        {
+          "name": "Sandra De Sá",
+          "anv": "",
+          "join": "",
+          "role": "Featuring",
+          "tracks": "",
+          "id": 358470,
+          "resource_url": "https://api.discogs.com/artists/358470"
+        },
+        {
+          "name": "Carlinhos Brown",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 41453,
+          "resource_url": "https://api.discogs.com/artists/41453"
+        }
+      ],
+      "duration": "2:57"
+    },
+    {
+      "position": "7",
+      "type_": "track",
+      "title": "Fim De Jogo",
+      "extraartists": [
+        {
+          "name": "Jamil Joanes",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 297260,
+          "resource_url": "https://api.discogs.com/artists/297260"
+        },
+        {
+          "name": "Nelson Motta",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 315787,
+          "resource_url": "https://api.discogs.com/artists/315787"
+        }
+      ],
+      "duration": "4:19"
+    },
+    {
+      "position": "8",
+      "type_": "track",
+      "title": "Feitiço",
+      "extraartists": [
+        {
+          "name": "Lenine",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 89142,
+          "resource_url": "https://api.discogs.com/artists/89142"
+        }
+      ],
+      "duration": "3:01"
+    },
+    {
+      "position": "9",
+      "type_": "track",
+      "title": "Deixa Falar",
+      "extraartists": [
+        {
+          "name": "Fátima Guedes",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 1856828,
+          "resource_url": "https://api.discogs.com/artists/1856828"
+        }
+      ],
+      "duration": "3:19"
+    },
+    {
+      "position": "10",
+      "type_": "track",
+      "title": "É D’Oxum",
+      "extraartists": [
+        {
+          "name": "Gerônimo",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 486466,
+          "resource_url": "https://api.discogs.com/artists/486466"
+        },
+        {
+          "name": "Vevé Calazans",
+          "anv": "Vevé Calasans",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 2273419,
+          "resource_url": "https://api.discogs.com/artists/2273419"
+        }
+      ],
+      "duration": "3:08"
+    },
+    {
+      "position": "11",
+      "type_": "track",
+      "title": "Tudo Vai Bem (Nós Sofre Mas, Nós Goza)",
+      "extraartists": [
+        {
+          "name": "Vital Farias",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 1048636,
+          "resource_url": "https://api.discogs.com/artists/1048636"
+        }
+      ],
+      "duration": "2:26"
+    },
+    {
+      "position": "12",
+      "type_": "track",
+      "title": "La Vie En Rose",
+      "extraartists": [
+        {
+          "name": "Oswaldinho Do Acordeon",
+          "anv": "Oswaldinho",
+          "join": "",
+          "role": "Featuring",
+          "tracks": "",
+          "id": 2100007,
+          "resource_url": "https://api.discogs.com/artists/2100007"
+        },
+        {
+          "name": "Edith Piaf",
+          "anv": "",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 156406,
+          "resource_url": "https://api.discogs.com/artists/156406"
+        },
+        {
+          "name": "Louis Guglielmi",
+          "anv": "Louis Guglielmi Louiguy",
+          "join": "",
+          "role": "Written-By",
+          "tracks": "",
+          "id": 809665,
+          "resource_url": "https://api.discogs.com/artists/809665"
+        }
+      ],
+      "duration": "2:55"
+    }
+  ],
+  "extraartists": [
+    {
+      "name": "Nelson Motta",
+      "anv": "",
+      "join": "",
+      "role": "Producer",
+      "tracks": "",
+      "id": 315787,
+      "resource_url": "https://api.discogs.com/artists/315787"
+    }
+  ],
+  "images": [
+    {
+      "type": "secondary",
+      "uri": "https://i.discogs.com/3zIyivlZ5tDxuEoTGT7ShCn9w4I2bRp2zkMwQXsd5II/rs:fit/g:sm/q:90/h:600/w:599/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/MzAtNTg2OC5qcGVn.jpeg",
+      "resource_url": "https://i.discogs.com/3zIyivlZ5tDxuEoTGT7ShCn9w4I2bRp2zkMwQXsd5II/rs:fit/g:sm/q:90/h:600/w:599/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/MzAtNTg2OC5qcGVn.jpeg",
+      "uri150": "https://i.discogs.com/Fl_z_zweBuFBVBWs8z6XbrG8EJ-gnkVav7H6HtCE92Q/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/MzAtNTg2OC5qcGVn.jpeg",
+      "width": 599,
+      "height": 600
+    },
+    {
+      "type": "secondary",
+      "uri": "https://i.discogs.com/n4TZ2Ws48LfWdMvWOVQfwXU9VIKR_BXUB9YnP7G_Zes/rs:fit/g:sm/q:90/h:469/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/MzctNTkyOC5qcGVn.jpeg",
+      "resource_url": "https://i.discogs.com/n4TZ2Ws48LfWdMvWOVQfwXU9VIKR_BXUB9YnP7G_Zes/rs:fit/g:sm/q:90/h:469/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/MzctNTkyOC5qcGVn.jpeg",
+      "uri150": "https://i.discogs.com/CODKlM8EPE5GXkUZQNmhFAnRmla_OrYI1aHVKGgrjLo/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/MzctNTkyOC5qcGVn.jpeg",
+      "width": 600,
+      "height": 469
+    },
+    {
+      "type": "secondary",
+      "uri": "https://i.discogs.com/2Tvwg-_IhKOvRwPDBDnKH5Eq_xm-80R-pXY_G4cGV6A/rs:fit/g:sm/q:90/h:598/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NTQtMzc1NS5qcGVn.jpeg",
+      "resource_url": "https://i.discogs.com/2Tvwg-_IhKOvRwPDBDnKH5Eq_xm-80R-pXY_G4cGV6A/rs:fit/g:sm/q:90/h:598/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NTQtMzc1NS5qcGVn.jpeg",
+      "uri150": "https://i.discogs.com/6uBKNxTlr5tH99-wOs3z4ItpzrimzM62Yscbwms1ySU/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NTQtMzc1NS5qcGVn.jpeg",
+      "width": 600,
+      "height": 598
+    },
+    {
+      "type": "secondary",
+      "uri": "https://i.discogs.com/uwBgAumN61xvqWhSXHcuvma1HXfu6uLz2ybChefsk3g/rs:fit/g:sm/q:90/h:300/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NjItNTQwMS5qcGVn.jpeg",
+      "resource_url": "https://i.discogs.com/uwBgAumN61xvqWhSXHcuvma1HXfu6uLz2ybChefsk3g/rs:fit/g:sm/q:90/h:300/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NjItNTQwMS5qcGVn.jpeg",
+      "uri150": "https://i.discogs.com/b5YytP83F1eE66oCwBB2C4SDWTVGJDz8vGshiRx5fIQ/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NjItNTQwMS5qcGVn.jpeg",
+      "width": 600,
+      "height": 300
+    },
+    {
+      "type": "secondary",
+      "uri": "https://i.discogs.com/GiFOwfcJKHwFVc96goXunJTLyVbs8u_oUQIVETDH6QM/rs:fit/g:sm/q:90/h:600/w:593/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NzEtNDYwNi5qcGVn.jpeg",
+      "resource_url": "https://i.discogs.com/GiFOwfcJKHwFVc96goXunJTLyVbs8u_oUQIVETDH6QM/rs:fit/g:sm/q:90/h:600/w:593/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NzEtNDYwNi5qcGVn.jpeg",
+      "uri150": "https://i.discogs.com/Zuv0BFlcK32Sm-ljQ72hCQmn3aP0QI12FRgxa8o8wo8/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/NzEtNDYwNi5qcGVn.jpeg",
+      "width": 593,
+      "height": 600
+    }
+  ],
+  "thumb": "https://i.discogs.com/Fl_z_zweBuFBVBWs8z6XbrG8EJ-gnkVav7H6HtCE92Q/rs:fit/g:sm/q:40/h:150/w:150/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyOTkw/MjA1LTE3MzgxNzc3/MzAtNTg2OC5qcGVn.jpeg",
+  "estimated_weight": 85,
+  "blocked_from_sale": false,
+  "is_offensive": false
+}
