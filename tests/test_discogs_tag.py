@@ -202,7 +202,7 @@ def test_skip_only_options():
   assert audio['title'] == 'Title: Sub track 1 / Sub track 2'
   assert 'tracknumber' not in audio
 
-def test_sub_tracks(mocker, capsys):
+def test_subtracks(mocker, capsys):
   audio = apply_metadata_track({
     'year': 2002,
     'artists': [{
@@ -251,28 +251,20 @@ def test_sub_tracks(mocker, capsys):
     captured = capsys.readouterr()
     assert "'title': 'Adivinha O Quê?', 'tracknumber': '10'" in captured.out
 
-def test_apply_metadata():
-  with open('tests/18051880.json') as release:
+  with open('tests/32990205.json') as release:
     data = json.load(release)
+    apply_metadata(data, range(12), parse_options({ 'dry': True, 'dots_as_subtracks': True, 'skip': ['subtracks'] }))
+    captured = capsys.readouterr()
+    assert "'title': 'Pisa Na Fulô / Extra / O Cheiro Da Carolina', 'tracknumber': '5'" in captured.out
 
-    # Test that files must match API results.
-    with pytest.raises(Exception) as error:
-      apply_metadata(data, [], parse_options({ 'dry': False, 'skip': None }))
-    assert "Expecting 28 files" in str(error.value)
-
-def test_count_subtracks():
   with open('tests/21343819.json') as release:
     data = json.load(release)
-
-    # Test that files must match API results with subtracks.
-    with pytest.raises(Exception) as error:
-      apply_metadata(data, [], parse_options({ 'dry': False, 'skip': None }))
-    assert "Expecting 18 files" in str(error.value)
+    apply_metadata(data, range(17), parse_options({ 'dry': True, 'skip': None }))
+    captured = capsys.readouterr()
+    assert "Expecting 18 files but found 17. Ignoring." in captured.err
 
   with open('tests/8582788.json') as release:
     data = json.load(release)
-
-    # Test that files must match API results without subtracks.
     with pytest.raises(Exception) as error:
       apply_metadata(data, [], parse_options({ 'dry': False, 'skip': 'subtracks' }))
     assert "Expecting 14 files" in str(error.value)

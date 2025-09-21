@@ -45,6 +45,19 @@ def version():
     'version': __VERSION__
   }, indent=4))
 
+def release(release):
+  """ Download the specified Discogs release as JSON.
+
+  The RELEASE can be one of the following:
+      - A full Discogs release URL, e.g. https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here
+      - The numeric portion of the above, e.g. 16215626
+      - A local file URI pointing to a release JSON file
+
+  """
+  response = get_release(release)
+  data = json.load(response)
+  print(json.dumps(data, indent=4))
+
 def tag(
   release,
   dir='./',
@@ -53,7 +66,7 @@ def tag(
   only=None,
   dots_as_subtracks=True
 ):
-  """Tag the audio files with the given Discogs release.
+  """ Tag the audio files with the given Discogs release.
 
   The RELEASE can be one of the following:
       - A full Discogs release URL, e.g. https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here
@@ -71,8 +84,6 @@ def tag(
   options = parse_options(locals())
   response = get_release(release)
   data = json.load(response)
-  if options['dry']:
-    pprint(data, width=1000)
   files = list_files(dir)
   apply_metadata(data, files, options)
 
@@ -83,7 +94,7 @@ def copy(
   skip=None,
   only=None
 ):
-  """Copy the audio tags from source to destination folders.
+  """ Copy the audio tags from source to destination folders.
 
   The SKIP and ONLY flags can take one or more of the following values, comma-separated:
       artist, composer, title, position, date, subtracks, album, genre, albumartist
@@ -109,7 +120,7 @@ def rename(
   dir='./',
   dry=False,
 ):
-  """Rename the audio files based on the given format string.
+  """ Rename the audio files based on the given format string.
 
   The FORMAT string specifies how to rename the audio files and/or directories according to the following tags:
       %a Artist
@@ -176,7 +187,7 @@ def get_release(release):
   headers = {
     'User-Agent': f'{__NAME__} {__VERSION__}'
   }
-  match = re.match(r"https://www\.discogs\.com/release/(\d*)", release)
+  match = re.match(r"https://www\.discogs\.com/release/(\d*)", str(release))
   if match:
     release = f'https://api.discogs.com/releases/{match.group(1)}'
   try:
@@ -187,7 +198,7 @@ def get_release(release):
     return urllib.request.urlopen(request)
 
 def read_metadata(audios, options):
-  """Read metadata from audio files and return data structure that mimics Discogs release."""
+  """ Read metadata from audio files and return data structure that mimics Discogs release. """
   def safe_position(audio, n):
     try:
       tracknumber = audio.get('tracknumber', [str(n)])[0].split('/')
@@ -226,12 +237,16 @@ def read_metadata(audios, options):
   }
 
 def apply_metadata(release, files, options):
-  """Apply Discogs release metadada to audio files."""
+  """ Apply Discogs release metadada to audio files. """
   def get_tracks(tracklist):
+    """ Deduce the actual file tracks from the Discogs metadata.
+
+    This can get tricky because many combinations of tracks + subtracks exist in the database.
+    """
     def reduce_track(tracks, track_with_index):
       index, track = track_with_index
       if track['type_'] == 'track':
-        if '.' in track['position'] and options['dots_as_subtracks']:
+        if options['dots_as_subtracks'] and '.' in track['position']:
           num = int(track['position'].split('.')[0])
           sub = int(track['position'].split('.')[1])
           if sub == 1:
@@ -250,10 +265,26 @@ def apply_metadata(release, files, options):
               tracks = tracks + get_tracks(trk['sub_tracks'])
         else:
           tracks.append(track)
-      elif options['skip_subtracks'] and 'sub_tracks' in track:
-        tracks.append(track)
-      if not options['skip_subtracks'] and 'sub_tracks' in track:
-        tracks = tracks + get_tracks(track['sub_tracks'])
+      elif 'sub_tracks' in track:
+        # Special case: These subtracks might belong to the previous track if the numbering matches.
+        skip_regular_case = False
+        if options['dots_as_subtracks'] and 'position' in track['sub_tracks'][0] and '.' in track['sub_tracks'][0]['position']:
+          num = int(track['sub_tracks'][0]['position'].split('.')[0])
+          sub = int(track['sub_tracks'][0]['position'].split('.')[1])
+          if sub > 1 and len(tracks):
+            skip_regular_case = True
+            for t in track['sub_tracks']:
+              t['position'] = ''
+            if options['skip_subtracks']:
+              tracks[-1]['sub_tracks'] += track['sub_tracks']
+            else:
+              tracks = tracks + get_tracks(track['sub_tracks'])
+
+        if not skip_regular_case:
+          if options['skip_subtracks']:
+            tracks.append(track)
+          else:
+            tracks = tracks + get_tracks(track['sub_tracks'])
       return tracks
     return reduce(reduce_track, enumerate(tracklist), [])
 
@@ -385,6 +416,8 @@ def parse_options(options):
       options['only'] = [options['only']]
     for skip in options['only']:
       options['skip_' + skip.lower()] = False
+  if not 'dots_as_subtracks' in options:
+    options['dots_as_subtracks'] = True
   return options
 
 def apply_metadata_track(release, track, audio, n, options):
@@ -457,5 +490,6 @@ def cli():
     'version': version,
     'tag': tag,
     'copy': copy,
-    'rename': rename
+    'rename': rename,
+    'release': release
   })

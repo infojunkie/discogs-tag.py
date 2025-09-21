@@ -126,6 +126,24 @@ FLAGS
     --dry=DRY
         Default: False
 ```
+
+## release
+```shell
+NAME
+    discogs-tag release - Download the specified Discogs release as JSON.
+
+SYNOPSIS
+    discogs-tag release RELEASE
+
+DESCRIPTION
+    The RELEASE can be one of the following:
+        - A full Discogs release URL, e.g. https://www.discogs.com/release/16215626-Pink-Floyd-Wish-You-Were-Here
+        - The numeric portion of the above, e.g. 16215626
+        - A local file URI pointing to a release JSON file
+
+POSITIONAL ARGUMENTS
+    RELEASE
+```
 # Development
 - Install [`poetry`](https://python-poetry.org/docs/#installation)
 - `poetry install && poetry build && pip install .`
