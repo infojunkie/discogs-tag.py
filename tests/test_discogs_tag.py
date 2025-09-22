@@ -113,7 +113,7 @@ def test_apply_metadata_track():
       'role': 'Guitar',
       'name': 'Guitarist'
     }, {
-      'role': 'Written-By',
+      'role': 'Written By',
       'name': 'Composer 1'
     }, {
       'role': 'Composed By',

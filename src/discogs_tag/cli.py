@@ -25,10 +25,7 @@ SKIP_KEYS = [
   'albumartist'
 ]
 
-COMPOSER_TAGS = [
-  'Written-By',
-  'Composed By'
-]
+COMPOSER_TAGS = r"(written|composed)[- ]by"
 
 VARIOUS_ARTISTS = 'Various Artists'
 
@@ -470,7 +467,7 @@ def apply_metadata_track(release, track, audio, n, options):
       audio['album'] = release['title']
 
   if not options['skip_composer'] and 'extraartists' in track:
-    composers = [artist_name(composer) for composer in track['extraartists'] if composer['role'].casefold() in [c.casefold() for c in COMPOSER_TAGS]]
+    composers = [artist_name(composer) for composer in track['extraartists'] if re.fullmatch(COMPOSER_TAGS, composer['role'], re.IGNORECASE)]
     if composers:
       audio['composer'] = NON_TITLE_SEPARATOR.join(composers)
 
